@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: "Sana Sans Alt W00 Regular";
     src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot");
     src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot?#iefix") format("embedded-opentype"),
@@ -42,7 +42,7 @@
 }
 
 .header-logo {
-    width: 55px;
+    width: 85px; /* Increase the logo size */
     height: auto;
     margin: 0;
     padding: 0;
