@@ -14,36 +14,77 @@ body {
     background-color: #fff;
 }
 
-/* Toolbar Styles */
-.blue-toolbar {
-    background-color: #003366; /* Dark blue for toolbar */
-    height: 60px;
+/* Logo and Toolbar Container */
+.logo-toolbar {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Adjust Logo Size */
+.tohh-logo {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin-right: 10px;
+    z-index: 10; /* Highest z-index to ensure it's on top */
+    position: relative;
+}
+
+/* Blue Toolbar */
+.blue-toolbar {
+    background-color: #003366;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding: 0 20px;
     position: relative;
-    top: 70px; /* Positioned under the header */
+    flex-grow: 1;
+    width: 100%; /* Full width of the screen */
+    z-index: 5; /* Ensure it's below the logo */
+    margin-left: -300px; /* Adjust to move under the logo */
+}
+
+/* Pixelated Fade Effect */
+.blue-toolbar .fade-effect {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(0, 51, 102, 1) 40%);
+    height: 40px;
+    width: 100vw; /* Full viewport width */
+    position: absolute;
+    left: 0; /* Start from the far left of the screen */
+    top: 0;
+    z-index: 4; /* Below the toolbar */
+}
+
+/* Toolbar Links */
+.blue-toolbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    position: relative;
+    z-index: 10; /* Make sure the navigation is on top */
+    justify-content: flex-end; /* Shift all navigation items to the right */
+    width: 100%; /* Take up full width of the toolbar */
+}
+
+.blue-toolbar ul li {
+    margin-left: 20px; /* Increase spacing between the navigation items */
 }
 
 .blue-toolbar a {
     color: white;
     text-decoration: none;
-    padding: 0 15px;
+    padding: 10px;
     font-size: 16px;
     transition: color 0.3s;
 }
 
 .blue-toolbar a:hover {
-    color: #ffcc00; /* A highlight color on hover */
-}
-
-.blue-toolbar .fade-effect {
-    background: linear-gradient(to left, rgba(0, 51, 102, 0) 0%, #003366 100%);
-    width: 100px;
-    height: 100%;
-    position: absolute;
-    left: 0;
+    color: #ffcc00;
 }
 
 /* Responsive Fix */
@@ -55,6 +96,6 @@ body {
 
 @media screen and (max-width: 768px) {
     .blue-toolbar {
-        flex-wrap: wrap; /* To ensure it wraps properly on small devices */
+        flex-wrap: wrap;
     }
 }
