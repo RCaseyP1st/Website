@@ -1,26 +1,128 @@
-﻿.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f8f8f8;
-    border-bottom: 2px solid #ccc;
+﻿@font-face {
+    font-family: "Sana Sans Alt W00 Regular";
+    src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot");
+    src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.svg#Sana Sans Alt W00 Regular") format("svg");
 }
 
-.left-toolbar img {
-    height: 40px;
+.header {
+    -webkit-text-size-adjust: 100%; /* Ensures text size is not automatically adjusted in Safari and Chrome on mobile */
+    --livewire-progress-bar-color: #2299dd; /* CSS variable, used by a Livewire progress bar if included */
+    font-family: "Sana Sans Alt W00 Regular", sans-serif; /* Sets the font family */
+    font-style: normal; /* Ensures text is rendered in a normal style (i.e., not italic or oblique) */
+    font-weight: 600; /* Sets the font weight */
+    line-height: 1.7; /* Sets the spacing between lines of text */
+    color: #3e3e3e; /* Text color for the header */
+    font-size: 1em; /* Sets the overall font size */
+    box-sizing: border-box; /* Ensures padding and borders are included within the element’s width and height */
+    position: fixed; /* Fixes the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1004; /* Places the header above other elements */
+    display: flex; /* Flexbox for aligning child elements horizontally */
+    justify-content: space-between; /* Spaces child elements evenly */
+    align-items: center; /* Vertically centers child elements */
+    padding: 0px 0px; /* No padding */
+    background: #ffffff; /* White background */
+    border-bottom: 2px solid #e6e6e6; /* Light grey bottom border */
+    height: 3.55em; /* Sets the height of the header */
+}
+
+.element-class {
+    font-family: "Sana Sans Alt W00 Regular", sans-serif;
+    font-weight: 500; /* Adjust as necessary */
+}
+
+.left-toolbar {
+    display: flex; /* Flexbox for horizontal layout */
+    align-items: center; /* Vertically aligns the toolbar content in the middle */
+}
+
+.header-logo {
+    width: 55px; /* Logo size */
+    height: 53px;
+    margin: 0; /* Removes margins */
+    padding: 0; /* Removes padding */
+    position: relative;
+    top: 6px; /* Adjusts the logo vertically */
+    left: 0px; /* Adjusts the logo horizontally */
     margin-right: 10px;
 }
 
-.left-toolbar span, .right-toolbar a {
+/* Class for the numbers to always be teal */
+.toolbar-numbers {
+    color: #0093a2 !important; /* Teal color for the numbers */
+}
+
+.activities, .members {
+    margin-right: 20px; /* Adds space to the right of each element */
+    margin-top: 5px;
+    font-size: 15px; /* Font size */
+    font-weight: 600; /* Bold text */
+    color: #333; /* Dark grey for the words initially */
+    letter-spacing: 0.5px; /* Adjusts spacing between letters */
+    -webkit-font-smoothing: antialiased; /* Smooths the font */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links styling for "Activities" and "Members" */
+.activities a, .members a {
+    color: #333; /* Grey color for the words initially */
+    text-decoration: none; /* Removes the underline for links */
+}
+
+/* Hover effect for the words */
+.activities a:hover, .members a:hover {
+    color: #0093a2 !important; /* Changes the words to teal when hovered */
+}
+
+/* Ensuring visited links for "Activities" and "Members" stay dark grey */
+.activities a:visited, .members a:visited {
+    color: #333; /* Keeps the words dark grey even if visited */
+}
+
+.help-link {
+    font-size: 15px; /* Font size */
+    font-weight: 600; /* Bold text */
+    margin-top: 5px;
+    color: #333; /* Dark grey */
+    text-decoration: none; /* Removes the underline for the help link */
+}
+
+.help-link:hover {
+    color: #0093a2; /* Changes the help link to teal when hovered */
+}
+
+.right-toolbar {
+    display: flex; /* Flexbox for horizontal alignment */
+    align-items: center; /* Vertically centers the toolbar content */
     margin-right: 15px;
-    font-family: Arial, sans-serif;
 }
 
-.right-toolbar form {
-    display: inline-block;
+.search-input {
+    padding: 5px 10px; /* Adds padding inside the input */
+    border-radius: 20px; /* Rounds the input corners */
+    border: 1px solid #ccc; /* Light grey border */
+    font-size: 15px; /* Font size */
+    width: 180px; /* Width of the search input */
 }
 
-.right-toolbar input {
-    padding: 5px;
-    margin-right: 5px;
+.search-button {
+    background-color: transparent; /* Makes the button background transparent */
+    border: none; /* Removes button borders */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: -35px; /* Moves the button over the right edge */
+    padding: 0; /* Removes default padding */
+}
+
+.search-button img {
+    width: 20px; /* Size of the magnifying glass icon */
+    height: 20px;
+    margin-left: 40px;
+    position: relative;
+    top: 4px; /* Fine-tune the vertical position of the icon */
 }

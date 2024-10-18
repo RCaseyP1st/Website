@@ -1,14 +1,35 @@
-﻿<div class="header">
-    <div class="left-toolbar">
-        <img src="parent1st-logo.png" alt="Parent's 1st Logo">
-        <span>122 Activities</span>
-        <span>837 Members</span>
-        <a href="https://parents1st.org.uk/help">Help</a>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbar Example</title>
+    <link rel="stylesheet" href="../Style/StyleSheet.css">
+    <link href="https://db.onlinewebfonts.com/c/05bc9865d1c175deb11bcc23c7b96289?family=Sana+Sans+Alt+Book" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="left-toolbar">
+            <a href="/">
+                <img src="../Images/p1Logo.png" alt="Parents 1st Logo" class="header-logo">
+            </a>
+            <span class="activities">
+                <span class="toolbar-numbers">122</span> <a href="https://parents1st.org.uk/activities">Activities</a>
+            </span>
+            <span class="members">
+                <span class="toolbar-numbers">837</span> <a href="https://parents1st.org.uk/members">Members</a>
+            </span>
+            <a href="https://parents1st.org.uk/help" class="help-link">Help</a>
+        </div>
+        <div class="right-toolbar">
+            <form action="https://parents1st.org.uk/search" method="get">
+                <input type="text" name="query" class="search-input" placeholder="Search...">
+                <button type="submit" class="search-button">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="Search">
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="right-toolbar">
-        <form action="https://parents1st.org.uk/search" method="get">
-            <input type="text" name="query" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
+    
+</body>
+</html>
