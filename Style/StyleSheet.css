@@ -9,120 +9,172 @@
 }
 
 .header {
-    -webkit-text-size-adjust: 100%; /* Ensures text size is not automatically adjusted in Safari and Chrome on mobile */
-    --livewire-progress-bar-color: #2299dd; /* CSS variable, used by a Livewire progress bar if included */
-    font-family: "Sana Sans Alt W00 Regular", sans-serif; /* Sets the font family */
-    font-style: normal; /* Ensures text is rendered in a normal style (i.e., not italic or oblique) */
-    font-weight: 600; /* Sets the font weight */
-    line-height: 1.7; /* Sets the spacing between lines of text */
-    color: #3e3e3e; /* Text color for the header */
-    font-size: 1em; /* Sets the overall font size */
-    box-sizing: border-box; /* Ensures padding and borders are included within the element’s width and height */
-    position: fixed; /* Fixes the header at the top */
+    -webkit-text-size-adjust: 100%;
+    --livewire-progress-bar-color: #2299dd;
+    font-family: "Sana Sans Alt W00 Regular", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.7;
+    color: #3e3e3e;
+    font-size: 1em;
+    box-sizing: border-box;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Full width */
-    z-index: 1004; /* Places the header above other elements */
-    display: flex; /* Flexbox for aligning child elements horizontally */
-    justify-content: space-between; /* Spaces child elements evenly */
-    align-items: center; /* Vertically centers child elements */
-    padding: 0px 0px; /* No padding */
-    background: #ffffff; /* White background */
-    border-bottom: 2px solid #e6e6e6; /* Light grey bottom border */
-    height: 3.55em; /* Sets the height of the header */
+    width: 100%;
+    z-index: 1004;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px;
+    background: #ffffff;
+    border-bottom: 2px solid #e6e6e6;
+    height: 3.55em;
 }
 
 .element-class {
     font-family: "Sana Sans Alt W00 Regular", sans-serif;
-    font-weight: 500; /* Adjust as necessary */
+    font-weight: 500;
 }
 
 .left-toolbar {
-    display: flex; /* Flexbox for horizontal layout */
-    align-items: center; /* Vertically aligns the toolbar content in the middle */
+    display: flex;
+    align-items: center;
 }
 
 .header-logo {
-    width: 55px; /* Logo size */
+    width: 55px;
     height: 53px;
-    margin: 0; /* Removes margins */
-    padding: 0; /* Removes padding */
+    margin: 0;
+    padding: 0;
     position: relative;
-    top: 6px; /* Adjusts the logo vertically */
-    left: 0px; /* Adjusts the logo horizontally */
+    top: 6px;
+    left: 0px;
     margin-right: 10px;
 }
 
 /* Class for the numbers to always be teal */
 .toolbar-numbers {
-    color: #0093a2 !important; /* Teal color for the numbers */
+    color: #0093a2 !important;
 }
 
 .activities, .members {
-    margin-right: 20px; /* Adds space to the right of each element */
+    margin-right: 20px;
     margin-top: 5px;
-    font-size: 15px; /* Font size */
-    font-weight: 600; /* Bold text */
-    color: #333; /* Dark grey for the words initially */
-    letter-spacing: 0.5px; /* Adjusts spacing between letters */
-    -webkit-font-smoothing: antialiased; /* Smooths the font */
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.5px;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 /* Links styling for "Activities" and "Members" */
 .activities a, .members a {
-    color: #333; /* Grey color for the words initially */
-    text-decoration: none; /* Removes the underline for links */
+    color: #333;
+    text-decoration: none;
 }
 
 /* Hover effect for the words */
 .activities a:hover, .members a:hover {
-    color: #0093a2 !important; /* Changes the words to teal when hovered */
+    color: #0093a2 !important;
 }
 
 /* Ensuring visited links for "Activities" and "Members" stay dark grey */
 .activities a:visited, .members a:visited {
-    color: #333; /* Keeps the words dark grey even if visited */
+    color: #333;
 }
 
 .help-link {
-    font-size: 15px; /* Font size */
-    font-weight: 600; /* Bold text */
+    font-size: 15px;
+    font-weight: 600;
     margin-top: 5px;
-    color: #333; /* Dark grey */
-    text-decoration: none; /* Removes the underline for the help link */
+    color: #333;
+    text-decoration: none;
 }
 
 .help-link:hover {
-    color: #0093a2; /* Changes the help link to teal when hovered */
+    color: #0093a2;
 }
 
-.right-toolbar {
-    display: flex; /* Flexbox for horizontal alignment */
-    align-items: center; /* Vertically centers the toolbar content */
-    margin-right: 15px;
+/* Center the search bar in the toolbar */
+.center-toolbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .search-input {
-    padding: 5px 10px; /* Adds padding inside the input */
-    border-radius: 20px; /* Rounds the input corners */
-    border: 1px solid #ccc; /* Light grey border */
-    font-size: 15px; /* Font size */
-    width: 180px; /* Width of the search input */
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    width: 250px;
+    margin-left: 10px;
 }
 
 .search-button {
-    background-color: transparent; /* Makes the button background transparent */
-    border: none; /* Removes button borders */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-left: -35px; /* Moves the button over the right edge */
-    padding: 0; /* Removes default padding */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
 
 .search-button img {
-    width: 20px; /* Size of the magnifying glass icon */
+    width: 20px;
     height: 20px;
-    margin-left: 40px;
     position: relative;
-    top: 4px; /* Fine-tune the vertical position of the icon */
+    top: 3px;
+}
+
+/* Crisis button styles */
+.crisis-button {
+    background-color: #df0000;
+    border: 2px solid #df0000;
+    color: white;
+    font-family: 'Hind', sans-serif;
+    font-size: 15px;
+    line-height: 23px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), color 0.3s cubic-bezier(0.5, 1.5, 0.5, 1), stroke 0.3s ease;
+}
+
+
+.crisis-button span {
+    margin-left: 10px;
+    transition: stroke 0.3s ease, color 0.3s cubic-bezier(0.5, 1.5, 0.5, 1);
+}
+
+.exclamation-triangle svg {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 3px;
+    transition: stroke 0.3s cubic-bezier(0.5, 1.5, 0.5, 1), color 0.3s ease;
+}
+
+/* Hover effect: change to white background, red text */
+.crisis-button:hover {
+    background-color: white;
+    color: #df0000;
+}
+
+.crisis-button:hover .exclamation-triangle svg {
+    stroke: #df0000;
+}
+
+.crisis-button:hover span {
+    color: #df0000;
+}
+
+/* Adjusting the right toolbar */
+.right-toolbar {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 }
