@@ -1,0 +1,26 @@
+﻿.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #ccc;
+}
+
+.left-toolbar img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.left-toolbar span, .right-toolbar a {
+    margin-right: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.right-toolbar form {
+    display: inline-block;
+}
+
+.right-toolbar input {
+    padding: 5px;
+    margin-right: 5px;
+}

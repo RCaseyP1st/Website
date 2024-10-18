@@ -69,7 +69,7 @@
   <ItemGroup>
     <Content Include="Pages\index.html" />
     <Content Include="Java\JavaScript.js" />
-    <Content Include="Style\StyleSheet1.css" />
+    <Content Include="Style\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
