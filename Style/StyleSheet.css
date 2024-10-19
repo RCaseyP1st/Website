@@ -28,9 +28,7 @@
     padding: 0px 0px;
     background: #ffffff;
     border-bottom: 2px solid #e6e6e6;
-    height: 3.55em;
-    z-index: 1000;
-    background-color: #ffffff !important;
+    height: 55px; /* Adjusted height */
 }
 
 .element-class {
@@ -44,7 +42,7 @@
 }
 
 .header-logo {
-    width: 85px; /* Increase the logo size */
+    width: 55px; /* Reduced size slightly */
     height: auto;
     margin: 0;
     padding: 0;
@@ -52,8 +50,10 @@
     top: 6px;
     left: 0px;
     margin-right: 10px;
+    border: 1px solid #e6e6e6; /* Added grey border */
     transition: width 0.3s ease; /* Smoothly resize the logo */
 }
+
 
 /* Class for the numbers to always be teal */
 .toolbar-numbers {
@@ -62,7 +62,7 @@
 
 .activities, .members {
     margin-right: 20px;
-    margin-top: 5px;
+    margin-top: 3px; /* Adjusted margin to reduce header height */
     font-size: 15px;
     font-weight: 600;
     color: #333;
@@ -139,7 +139,7 @@
     font-family: 'Hind', sans-serif;
     font-size: 15px;
     line-height: 23px;
-    padding: 10px 20px;
+    padding: 8px 15px; /* Adjusted padding to reduce button size */
     border-radius: 30px;
     text-decoration: none;
     font-weight: 300;
@@ -150,7 +150,7 @@
 
 .crisis-button span {
     margin-left: 10px;
-    transition: stroke 0.3s ease, color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .exclamation-triangle svg {
@@ -171,8 +171,10 @@
     stroke: #df0000;
 }
 
-.crisis-button:hover span {
-    color: #df0000;
+/* Adjusted to ensure text transitions smoothly back to white */
+.crisis-button:not(:hover) span {
+    color: white;
+    transition: color 0.3s ease;
 }
 
 /* Adjusting the right toolbar */
