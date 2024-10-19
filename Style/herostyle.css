@@ -1,0 +1,40 @@
+/* Hero Container Styling */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Matches the height of your hero images */
+    overflow: hidden;
+}
+
+/* Image Styling */
+.hero-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+/* Left and Right "Papers" for Animation */
+.left-paper, .right-paper {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+}
+
+.left-paper {
+    left: 0;
+    transform: translateX(-100%); /* Initially off the screen */
+}
+
+.right-paper {
+    right: 0;
+    transform: translateX(100%); /* Initially off the screen */
+}

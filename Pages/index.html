@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toolbar Example</title>
+    <title>Website with Hero Section</title>
+    <!-- Header and Hero Styles -->
     <link rel="stylesheet" href="../Style/headerstyle.css">
     <link rel="stylesheet" href="../Style/herostyle.css">
     <link href="https://db.onlinewebfonts.com/c/05bc9865d1c175deb11bcc23c7b96289?family=Sana+Sans+Alt+Book" rel="stylesheet">
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
 </head>
 <body>
+    <!-- HEADER SECTION -->
     <div class="header">
         <div class="left-toolbar">
             <a href="/">
@@ -45,5 +50,20 @@
             </a>
         </div>
     </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero-container">
+        <div class="hero-image-wrapper">
+            <img src="../Images/Hero1.png" alt="Hero Image" class="hero-image">
+        </div>
+
+        <!-- Left and Right sliding "papers" for transition -->
+        <div class="left-paper"></div>
+        <div class="right-paper"></div>
+    </div>
+
+    <!-- Include the animation script -->
+    <script src="../Java/heroAnimation.js"></script>
+
 </body>
 </html>
