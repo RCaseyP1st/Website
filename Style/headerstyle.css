@@ -29,6 +29,8 @@
     background: #ffffff;
     border-bottom: 2px solid #e6e6e6;
     height: 3.55em;
+    z-index: 1000;
+    background-color: #ffffff !important;
 }
 
 .element-class {

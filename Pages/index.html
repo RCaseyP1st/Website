@@ -8,13 +8,14 @@
     <!-- CSS References -->
     <link rel="stylesheet" href="../Style/headerstyle.css">
     <link rel="stylesheet" href="../Style/bodystyle.css">
-    
+    <link rel="stylesheet" href="../Style/herostyle.css"> <!-- Hero section CSS -->
+
     <!-- Font -->
     <link href="https://db.onlinewebfonts.com/c/05bc9865d1c175deb11bcc23c7b96289?family=Sana+Sans+Alt+Book" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
-    <div class="header">
+     <div class="header">
         <div class="left-toolbar">
             <a href="/">
                 <img src="../Images/p1Logo.png" alt="Parents 1st Logo" class="header-logo">
@@ -53,26 +54,69 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-image"></div>
+        <div class="hero-image"></div>
+        <div class="hero-image"></div>
+
+        <!-- Panels for transition effect -->
+        <div class="hero-panel hero-panel-left"></div>
+        <div class="hero-panel hero-panel-right"></div>
+    </div>
+
     <!-- Logo and Navigation Toolbar Section -->
     <div class="logo-toolbar">
-        <!-- Logo -->
-        <div class="logo-container">
-            <img src="../Images/TOHHLogo.png" alt="The Other-Half Hub Logo" class="tohh-logo">
-        </div>
-
-        <!-- Navigation Toolbar -->
-        <div class="blue-toolbar">
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Dads & Partners Guide</a></li>
-                <li><a href="#">LGBTQIA+</a></li>
-                <li><a href="#">Podcasts</a></li>
-                <li><a href="#">YouTube Channels</a></li>
-                <li><a href="#">Groups</a></li>
-                <li><a href="#">Wellbeing Review Form</a></li>
-            </ul>
-            <div class="fade-effect"></div> <!-- Pixelated Fade Effect -->
-        </div>
+        <!-- Your existing toolbar and logo code -->
     </div>
+
+    <!-- Include GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
+    <!-- GSAP Script for Animations -->
+    <script>
+        const panels = gsap.utils.toArray('.hero-image');
+const leftPanel = document.querySelector('.hero-panel-left');
+const rightPanel = document.querySelector('.hero-panel-right');
+
+let activeIndex = 0;
+
+// Adjust the animation to reveal the image
+function animatePanels() {
+    gsap.to(leftPanel, {
+        duration: 1,
+        x: '-100%', // Move left panel outward to the left
+        ease: 'elastic.out(1, 0.5)'
+    });
+
+    gsap.to(rightPanel, {
+        duration: 1,
+        x: '100%', // Move right panel outward to the right
+        ease: 'elastic.out(1, 0.5)',
+        onComplete: showNextImage // Show the image after panels move out
+    });
+}
+
+
+function showNextImage() {
+    activeIndex = (activeIndex + 1) % panels.length;
+    gsap.to(panels[activeIndex], {
+        opacity: 1,
+        duration: 1,
+        onComplete: resetPanels // Reset panels after image change
+    });
+}
+
+function resetPanels() {
+    gsap.to(leftPanel, { x: '0%', duration: 0.5 }); // Move the panels back to the center
+    gsap.to(rightPanel, { x: '0%', duration: 0.5 });
+}
+
+// Start the animation
+animatePanels();
+
+    </script>
 </body>
 </html>

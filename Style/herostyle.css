@@ -1,0 +1,55 @@
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-image:nth-child(1) {
+    background-image: url('../Images/Hero1.png');
+}
+
+.hero-image:nth-child(2) {
+    background-image: url('../Images/Hero2.png');
+}
+
+.hero-image:nth-child(3) {
+    background-image: url('../Images/Hero3.png');
+}
+
+/* Hero Panels */
+.hero-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    z-index: 10; /* Keep on top of the images */
+    top: 0;
+    bottom: 0;
+}
+
+.hero-panel-left {
+    left: 50%; /* Start in the center */
+    transform-origin: center left;
+}
+
+.hero-panel-right {
+    right: 50%; /* Start in the center */
+    transform-origin: center right;
+}
+
+
+
+/* Toolbar still styled the same but moved down */
+.blue-toolbar {
+    margin-top: 100vh; /* Moves it down after the hero section */
+}
