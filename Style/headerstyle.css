@@ -42,15 +42,15 @@
 }
 
 .header-logo {
-    width: 55px; /* Reduced size slightly */
+    width: 53px; /* Reduced size slightly */
     height: auto;
     margin: 0;
     padding: 0;
     position: relative;
-    top: 6px;
+    top: 5px;
     left: 0px;
     margin-right: 10px;
-    border: 1px solid #e6e6e6; /* Added grey border */
+    border: 2px solid #e6e6e6; /* Added grey border */
     transition: width 0.3s ease; /* Smoothly resize the logo */
 }
 
