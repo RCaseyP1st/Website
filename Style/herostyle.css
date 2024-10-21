@@ -44,33 +44,34 @@
 @keyframes fadeInLogo {
     from {
         opacity: 0;
-        transform: translateY(-500px);
+        transform: translateY(-500px) scale(0.5);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(3);
     }
 }
 
 @keyframes pulse {
     0%, 100% {
-        transform: scale(1); /* Normal size */
+        transform: scale(3); /* Normal size */
     }
     50% {
-        transform: scale(1.15); /* Slightly larger */
+        transform: scale(3.35); /* Slightly larger */
     }
 }
 
 .hero-logo {
         position: absolute;
-        bottom: 60px;
-        left: 20px;
-        /*transform: translateX(-50%); /* Center horizontally */
+        bottom: 40%;
+        left: 10%;
         width: 100px; /* Adjust to your logo size */
         height: auto;
         opacity: 0;
         animation: fadeInLogo 3.5s ease-in-out, pulse 4s ease-in-out 5.5s infinite; /* Fade in and move down */
         animation-fill-mode: forwards;
+        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))drop-shadow(0 0 40px rgba(255, 255, 255, 1))drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+
 }
 
 /* Responsive adjustments */
