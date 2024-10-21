@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Other-Half Hub: Parents1st</title>
-    <link rel="stylesheet" href="../Style/headerstyle.css">
+    <link rel="stylesheet" href="../Style/headerstyle.css"> <!-- Header CSS -->
+    <link rel="stylesheet" href="../Style/herostyle.css"> <!-- Hero section CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 </head>
 <body>
@@ -47,9 +48,19 @@
         </div>
     </div>
 
-    <!-- Hero Section Removed -->
-    <!-- Future content can go here -->
+    <div class="hero-section">
+        <img src="../Images/Hero1.png" alt="Hero Image" class="hero-image">
+        <img src="../Images/TOHHLogo.png" alt="Logo" class="hero-logo">
+        <div class="hero-text" id="hero-text">Welcome to The Other-Half Hub</div>
+    </div>             
 
-    <script src="../Java/heroAnimation.js"></script> <!-- Correct path -->
+    <script src="../Java/heroAnimation.js"></script>
+    <script>
+        // Trigger the fade-in animation when the page loads
+        window.onload = function() {
+            const heroText = document.getElementById('hero-text');
+            heroText.classList.add('fade-in');
+        }
+    </script>
 </body>
 </html>
