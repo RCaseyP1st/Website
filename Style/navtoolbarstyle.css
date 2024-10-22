@@ -1,8 +1,7 @@
 .navigation-toolbar {
   background-color: #f8f9fa; /* Light background for the toolbar */
-  border-top: 2px solid #e6e6e6; /* To match your header's style */
-  border-bottom: 2px solid #999;
-  border-top: 2px solid #999;
+  border-top: 2px solid #999; /* Top border */
+  border-bottom: 2px solid #999; /* Bottom border */
   padding: 10px 0;
 }
 
@@ -20,6 +19,17 @@
   position: relative;
 }
 
+/* Divider before the first item */
+.navigation-toolbar ul li:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: #999; /* Same color as other dividers */
+}
+
 /* More visible dividers between items */
 .navigation-toolbar ul li::after {
   content: '';
@@ -29,11 +39,6 @@
   height: 100%;
   width: 2px; /* Divider width */
   background-color: #999; /* Darker grey for more visibility */
-}
-
-/* Remove the divider for the last item */
-.navigation-toolbar ul li:last-child::after {
-  display: none;
 }
 
 /* Using your color scheme */
@@ -54,16 +59,17 @@
 /* For mobile screens, adjust layout */
 @media (max-width: 768px) {
   .navigation-toolbar ul {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .navigation-toolbar ul li {
-      margin: 5px 0;
-      flex: none; /* Remove equal spacing on mobile */
+    margin: 5px 0;
+    flex: none; /* Remove equal spacing on mobile */
   }
 
+  .navigation-toolbar ul li::before, 
   .navigation-toolbar ul li::after {
-      display: none; /* No dividers on mobile for better readability */
+    display: none; /* No dividers on mobile for better readability */
   }
 }
