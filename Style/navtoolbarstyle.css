@@ -1,0 +1,67 @@
+.navigation-toolbar {
+  background-color: #f8f9fa; /* Light background for the toolbar */
+  border-top: 2px solid #e6e6e6; /* To match your header's style */
+  padding: 10px 0;
+}
+
+.navigation-toolbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between; /* Distribute sections equally */
+  margin: 0;
+  padding: 0;
+}
+
+.navigation-toolbar ul li {
+  flex: 1; /* Each item will take up equal space */
+  text-align: center; /* Center align the text */
+  position: relative;
+}
+
+/* More visible dividers between items */
+.navigation-toolbar ul li::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 2px; /* Divider width */
+  background-color: #999; /* Darker grey for more visibility */
+}
+
+/* Remove the divider for the last item */
+.navigation-toolbar ul li:last-child::after {
+  display: none;
+}
+
+/* Using your color scheme */
+.navigation-toolbar ul li a {
+  text-decoration: none;
+  font-family: "Sana Sans Alt W00 Regular", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #03969b; /* Cyan for the links */
+  transition: color 0.3s ease;
+}
+
+/* Change color on hover */
+.navigation-toolbar ul li a:hover {
+  color: #d27a14; /* Orange for mouseover */
+}
+
+/* For mobile screens, adjust layout */
+@media (max-width: 768px) {
+  .navigation-toolbar ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .navigation-toolbar ul li {
+      margin: 5px 0;
+      flex: none; /* Remove equal spacing on mobile */
+  }
+
+  .navigation-toolbar ul li::after {
+      display: none; /* No dividers on mobile for better readability */
+  }
+}
