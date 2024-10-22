@@ -255,13 +255,10 @@
         margin-left: 5px; /* Add slight margin to separate the icon */
     }
 
+    /* Further reduce the size of the "In Crisis" button for small screens */
     .crisis-button {
-        padding: 8px 10px; /* Adjust padding for small screens */
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        margin-left: auto;
+        padding: 5px 8px; /* Reduce padding more */
+        font-size: 0.7rem; /* Smaller font size */
+        border-radius: 25px; /* Slightly smaller radius */
     }
 }
