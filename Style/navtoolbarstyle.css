@@ -1,6 +1,8 @@
 .navigation-toolbar {
   background-color: #f8f9fa; /* Light background for the toolbar */
   border-top: 2px solid #e6e6e6; /* To match your header's style */
+  border-bottom: 2px solid #999;
+  border-top: 2px solid #999;
   padding: 10px 0;
 }
 
