@@ -25,7 +25,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 0px;
+    padding: 10px;
+    flex-wrap: wrap;
     background: #ffffff;
     border-bottom: 2px solid #e6e6e6;
     height: 55px; /* Adjusted height */
@@ -137,7 +138,7 @@
     border: 2px solid #df0000;
     color: white;
     font-family: 'Hind', sans-serif;
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 23px;
     padding: 8px 15px; /* Adjusted padding to reduce button size */
     border-radius: 30px;
@@ -202,6 +203,9 @@
     .right-toolbar {
         margin-right: 10px;
         flex-shrink: 1;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
     }
 
     .header-logo {
