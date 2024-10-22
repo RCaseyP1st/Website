@@ -27,7 +27,7 @@
 .hero-text {
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 3%;
     color: white;
     font-size: 2rem;
     font-family: 'Century Gothic', sans-serif;
@@ -44,33 +44,36 @@
 @keyframes fadeInLogo {
     from {
         opacity: 0;
-        transform: translateY(-500px) scale(0.5);
+        transform: translateY(-50px) scale(0.5);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(3);
+        transform: translateY(0) scale(1.5);
     }
 }
 
 @keyframes pulse {
     0%, 100% {
-        transform: scale(3); /* Normal size */
+        transform: scale(1.5); /* Normal size */
     }
     50% {
-        transform: scale(3.35); /* Slightly larger */
+        transform: scale(1.65); /* Slightly larger */
     }
 }
 
 .hero-logo {
         position: absolute;
-        bottom: 40%;
-        left: 10%;
-        width: 100px; /* Adjust to your logo size */
+        bottom: 25%;
+        left: 5%;
+        width: 20%; /* Adjust to your logo size */
         height: auto;
         opacity: 0;
         animation: fadeInLogo 3.5s ease-in-out, pulse 4s ease-in-out 5.5s infinite; /* Fade in and move down */
         animation-fill-mode: forwards;
-        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))drop-shadow(0 0 40px rgba(255, 255, 255, 1))drop-shadow(0 0 40px rgba(255, 255, 255, 1));
+        filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)) 
+                drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 1));
 
 }
 
@@ -85,6 +88,6 @@
     }
 
     .hero-logo {
-        width: 80px; /* Adjust logo size for smaller screens */
+        width: 15%; /* Adjust logo size for smaller screens */
     }
 }
