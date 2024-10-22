@@ -13,7 +13,6 @@
     font-family: "Sana Sans Alt W00 Regular", sans-serif;
     font-style: normal;
     font-weight: 600;
-    line-height: 1.7;
     color: #3e3e3e;
     font-size: 1em;
     box-sizing: border-box;
@@ -25,75 +24,81 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    flex-wrap: wrap;
+    padding: 0;
     background: #ffffff;
     border-bottom: 2px solid #e6e6e6;
-    height: 55px; /* Adjusted height */
+    height: 55px; /* Adjustable height for larger screens */
 }
 
-.element-class {
-    font-family: "Sana Sans Alt W00 Regular", sans-serif;
-    font-weight: 500;
+/* Dynamic header height for different screen sizes */
+@media (max-width: 1024px) {
+    .header {
+        height: 50px; /* Adjust for medium screens */
+    }
 }
 
-.left-toolbar {
+@media (max-width: 768px) {
+    .header {
+        height: 45px; /* Adjust for smaller screens */
+    }
+}
+
+.left-toolbar, .right-toolbar {
     display: flex;
     align-items: center;
+    height: 100%;
+}
+
+.right-toolbar {
+    margin-right: 15px;
 }
 
 .header-logo {
-    width: 53px; /* Reduced size slightly */
-    height: auto;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 5px;
-    left: 0px;
+    height: 55%; /* The logo will be 55% of the header height */
+    width: auto; /* Maintains the aspect ratio of the logo */
+    max-height: 55px; /* Ensure it does not exceed 55px on larger screens */
     margin-right: 10px;
     border: 2px solid #e6e6e6; /* Added grey border */
-    transition: width 0.3s ease; /* Smoothly resize the logo */
+    transition: height 0.3s ease;
 }
 
-
-/* Class for the numbers to always be teal */
 .toolbar-numbers {
     color: #0093a2 !important;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
 }
 
 .activities, .members {
     margin-right: 20px;
-    margin-top: 3px; /* Adjusted margin to reduce header height */
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #333;
-    letter-spacing: 0.5px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
 }
 
-/* Links styling for "Activities" and "Members" */
 .activities a, .members a {
     color: #333;
     text-decoration: none;
 }
 
-/* Hover effect for the words */
 .activities a:hover, .members a:hover {
     color: #0093a2 !important;
 }
 
-/* Ensuring visited links for "Activities" and "Members" stay dark grey */
 .activities a:visited, .members a:visited {
     color: #333;
 }
 
 .help-link {
-    font-size: 15px;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-top: 5px;
     color: #333;
     text-decoration: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .help-link:hover {
@@ -103,6 +108,7 @@
 /* Center the search bar in the toolbar */
 .center-toolbar {
     position: absolute;
+    align-items: center;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.3s ease;
@@ -114,6 +120,7 @@
     border: 1px solid #ccc;
     font-size: 15px;
     width: 250px;
+    align-items: center;
     margin-left: 10px;
     transition: width 0.3s ease;
 }
@@ -122,6 +129,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    align-items: center;
     padding: 0;
 }
 
@@ -132,37 +140,34 @@
     top: 3px;
 }
 
-/* Crisis button styles */
 .crisis-button {
     background-color: #df0000;
     border: 2px solid #df0000;
     color: white;
     font-family: 'Hind', sans-serif;
     font-size: 1rem;
-    line-height: 23px;
-    padding: 8px 15px; /* Adjusted padding to reduce button size */
+    padding: 10px 15px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 300;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: background-color 0.5s, color 0.3s, stroke 0.3s, width 0.3s ease;
 }
 
 .crisis-button span {
-    margin-left: 10px;
+    align-items: center;
     transition: color 0.3s ease;
 }
 
 .exclamation-triangle svg {
     width: 20px;
     height: 20px;
-    position: relative;
-    top: 3px;
+    align-items: center;
     transition: stroke 0.3s ease;
 }
 
-/* Hover effect: change to white background, red text */
 .crisis-button:hover {
     background-color: white;
     color: #df0000;
@@ -172,23 +177,30 @@
     stroke: #df0000;
 }
 
-/* Adjusted to ensure text transitions smoothly back to white */
 .crisis-button:not(:hover) span {
     color: white;
     transition: color 0.3s ease;
 }
 
-/* Adjusting the right toolbar */
-.right-toolbar {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .help-link {
+        display: none;
+    }
+
+    .center-toolbar .search-input {
+        width: 200px;
+    }
+
+    .header-logo {
+        height: 50%; /* Adjusts logo scaling for mid-size screens */
+        max-height: 50px;
+    }
 }
 
-/* Media Queries for Mobile Responsiveness */
-@media screen and (max-width: 1024px) {
-    .activities, .members, .help-link {
-        display: none; /* Hide activities, members, help earlier */
+@media (max-width: 768px) {
+    .activities, .members {
+        display: none;
     }
 
     .center-toolbar {
@@ -204,35 +216,27 @@
         margin-right: 10px;
         flex-shrink: 1;
         flex-grow: 1;
-        display: flex;
         justify-content: flex-end;
     }
 
-    .header-logo {
-        width: 45px; /* Keep logo but shrink it on smaller screens */
-    }
-
     .search-input {
-        width: 200px; /* Shrink the search bar earlier */
+        width: 150px;
     }
 
     .crisis-button {
-        padding: 8px 15px; /* Adjust crisis button padding for smaller screen */
-        font-size: 14px;
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .header-logo {
+        height: 45%; /* Further reduce the logo size for small screens */
+        max-height: 45px;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 480px) {
     .header-logo {
-        width: 40px; /* Further shrink the logo */
-    }
-
-    .search-input {
-        width: 150px; /* Further shrink the search bar */
-    }
-
-    .crisis-button {
-        padding: 5px 12px; /* Further shrink the crisis button */
-        font-size: 12px; /* Smaller text on the button */
+        height: 40%; /* Scale down even further on extra-small screens */
+        max-height: 40px;
     }
 }

@@ -80,7 +80,13 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        height: 30vh; /* Adjust for mobile */
+        height: 100%; /* Adjust for mobile */
+        max-height: 300px;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
     }
 
     .hero-text {
@@ -88,6 +94,7 @@
     }
 
     .hero-logo {
-        width: 15vw; /* Adjust logo size for smaller screens */
+        width: 20%; /* Adjust logo size for smaller screens */
+        bottom: 15%;
     }
 }
