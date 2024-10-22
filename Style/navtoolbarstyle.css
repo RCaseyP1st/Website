@@ -41,19 +41,48 @@
   background-color: #999; /* Darker grey for more visibility */
 }
 
-/* Using your color scheme */
+/* Style for the links */
 .navigation-toolbar ul li a {
   text-decoration: none;
   font-family: "Sana Sans Alt W00 Regular", sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #03969b; /* Cyan for the links */
+  color: #03969b; /* Cyan */
+  position: relative;
+  padding-bottom: 5px; /* Space for the underline */
   transition: color 0.3s ease;
 }
 
 /* Change color on hover */
 .navigation-toolbar ul li a:hover {
-  color: #d27a14; /* Orange for mouseover */
+  color: #d27a14; /* Change text color on hover */
+}
+
+/* Underline effect on hover (from center outwards) */
+.navigation-toolbar ul li a::before, .navigation-toolbar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #d27a14; /* Orange for the underline */
+  transition: width 0.3s ease;
+  width: 0;
+}
+
+.navigation-toolbar ul li a::before {
+  left: 50%; /* Start from the center */
+}
+
+.navigation-toolbar ul li a::after {
+  right: 50%; /* Start from the center */
+}
+
+.navigation-toolbar ul li a:hover::before {
+  width: 50%; /* Expand to the left */
+}
+
+.navigation-toolbar ul li a:hover::after {
+  width: 50%; /* Expand to the right */
 }
 
 /* For mobile screens, adjust layout */
