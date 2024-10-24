@@ -1,22 +1,29 @@
+/* Navigation Toolbar Styles */
 .navigation-toolbar {
-  background-color: #f8f9fa; /* Light background for the toolbar */
-  border-top: 2px solid #999; /* Top border */
-  border-bottom: 2px solid #999; /* Bottom border */
+  background-color: #f8f9fa; 
+  border-top: 2px solid #999;
+  border-bottom: 2px solid #999;
   padding: 10px 0;
+  position: relative; 
 }
 
 .navigation-toolbar ul {
   list-style: none;
   display: flex;
-  justify-content: space-between; /* Distribute sections equally */
+  justify-content: space-between;
   margin: 0;
   padding: 0;
 }
 
 .navigation-toolbar ul li {
-  flex: 1; /* Each item will take up equal space */
-  text-align: center; /* Center align the text */
-  position: relative;
+  flex: 1; 
+  text-align: center;
+  position: relative; 
+}
+
+/* Wrap each item to treat as a full button */
+.nav-item-wrapper {
+  position: relative; /* Reference for dropdown */
 }
 
 /* Divider before the first item */
@@ -27,78 +34,100 @@
   top: 0;
   height: 100%;
   width: 2px;
-  background-color: #999; /* Same color as other dividers */
+  background-color: #999;
 }
 
-/* More visible dividers between items */
 .navigation-toolbar ul li::after {
   content: '';
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  width: 2px; /* Divider width */
-  background-color: #999; /* Darker grey for more visibility */
+  width: 2px;
+  background-color: #999;
 }
 
-/* Style for the links */
+/* Style for the links (prevent text wrapping) */
 .navigation-toolbar ul li a {
   text-decoration: none;
   font-family: "Sana Sans Alt W00 Regular", sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #03969b; /* Cyan */
-  position: relative;
-  padding-bottom: 5px; /* Space for the underline */
+  color: #03969b;
+  padding-bottom: 5px;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  padding-left: 10px;
+  padding-right: 10px; /* Ensure there's spacing inside buttons */
 }
 
-/* Change color on hover */
 .navigation-toolbar ul li a:hover {
-  color: #d27a14; /* Change text color on hover */
+  color: #d27a14;
 }
 
-/* Underline effect on hover (from center outwards) */
-.navigation-toolbar ul li a::before, .navigation-toolbar ul li a::after {
+/* Orange underline effect */
+.navigation-toolbar ul li a::before, 
+.navigation-toolbar ul li a::after {
   content: '';
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #d27a14; /* Orange for the underline */
+  background-color: #d27a14;
   transition: width 0.3s ease;
   width: 0;
 }
 
 .navigation-toolbar ul li a::before {
-  left: 50%; /* Start from the center */
+  left: 50%;
 }
 
 .navigation-toolbar ul li a::after {
-  right: 50%; /* Start from the center */
+  right: 50%;
 }
 
-.navigation-toolbar ul li a:hover::before {
-  width: 50%; /* Expand to the left */
-}
-
+.navigation-toolbar ul li a:hover::before,
 .navigation-toolbar ul li a:hover::after {
-  width: 50%; /* Expand to the right */
+  width: 25%; /* Extends the underline 25% to the left and right */
 }
 
-/* For mobile screens, adjust layout */
+/* Responsive font size adjustments */
+
+/* Large screens (1024px and above) */
+@media (max-width: 1024px) {
+  .navigation-toolbar ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Medium screens (768px and below) */
 @media (max-width: 768px) {
-  .navigation-toolbar ul {
-    flex-direction: column;
-    align-items: center;
+  .navigation-toolbar ul li a {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small screens (600px and below) */
+@media (max-width: 600px) {
+  .navigation-toolbar ul li a {
+    font-size: 0.7rem;
+  }
+}
+
+/* Shorten text labels for the smallest screens (480px and below) */
+@media (max-width: 480px) {
+  .navigation-toolbar ul li a {
+    font-size: 0.6rem;
   }
 
-  .navigation-toolbar ul li {
-    margin: 5px 0;
-    flex: none; /* Remove equal spacing on mobile */
+  .navigation-toolbar ul li:nth-child(2) a {
+    content: 'Guides'; /* Shortens "Dads & Partners Guide" */
   }
 
-  .navigation-toolbar ul li::before, 
-  .navigation-toolbar ul li::after {
-    display: none; /* No dividers on mobile for better readability */
+  .navigation-toolbar ul li:nth-child(5) a {
+    content: 'YT Channels'; /* Shortens "Youtube Channels" */
+  }
+
+  .navigation-toolbar ul li:nth-child(7) a {
+    content: 'Wellbeing Review'; /* Shortens "Wellbeing Review Form" */
   }
 }

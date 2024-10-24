@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Images/favicon.ico" type="image/x-icon">
     <title>The Other-Half Hub: Parents1st</title>
     <link rel="stylesheet" href="../Style/headerstyle.css"> <!-- Header CSS -->
     <link rel="stylesheet" href="../Style/herostyle.css"> <!-- Hero section CSS -->
     <link rel="stylesheet" href="../Style/navtoolbarstyle.css"> <!-- Navigation Toolbar section CSS -->
+    <link rel="stylesheet" href="../Style/dropdownstyle.css"> <!-- Dropdown-specific CSS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 </head>
 <body>
@@ -59,7 +61,16 @@
     <!-- Navigation Toolbar -->
     <nav class="navigation-toolbar">
         <ul>
-          <li><a href="#">About Us</a></li>
+          <li class="dropdown">
+            <div class="nav-item-wrapper">
+              <a href="#">About Us</a>
+              <ul class="dropdown-content">
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">Our History</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+          </li>
           <li><a href="#">Dads & Partners Guide</a></li>
           <li><a href="#">LGBTQIA+</a></li>
           <li><a href="#">Podcasts</a></li>
@@ -67,7 +78,7 @@
           <li><a href="#">Groups</a></li>
           <li><a href="#">Wellbeing Review Form</a></li>
         </ul>
-    </nav>
+    </nav> 
                  
     <script src="../Java/heroAnimation.js"></script>
     <script>
