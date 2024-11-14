@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Website/static/css/main.4b0e7389.css",
+    "main.js": "/Website/static/js/main.f427f00c.js",
+    "static/js/453.16e3acdb.chunk.js": "/Website/static/js/453.16e3acdb.chunk.js",
+    "static/media/magglassp1st.svg": "/Website/static/media/magglassp1st.c607b33d9bf9f7d743604be4c9b9852f.svg",
+    "index.html": "/Website/index.html",
+    "main.4b0e7389.css.map": "/Website/static/css/main.4b0e7389.css.map",
+    "main.f427f00c.js.map": "/Website/static/js/main.f427f00c.js.map",
+    "453.16e3acdb.chunk.js.map": "/Website/static/js/453.16e3acdb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b0e7389.css",
+    "static/js/main.f427f00c.js"
+  ]
+}
