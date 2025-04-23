@@ -7,7 +7,7 @@
 }
 
 h1 {
-    font-family: "Century Gothic";
+    font-family: "Source Sans Pro";
     color: #0093a2;
 }
 
@@ -60,7 +60,7 @@ h1 {
     border: 2px solid #ffffff; /* Inner white border */
     box-shadow: 0 0 0 4px #555; /* Outer shadow (adjust thickness as needed) */
     cursor: pointer;
-    font-family: "Century Gothic";
+    font-family: "Source Sans Pro";
     font-size: 1rem;
     text-align: center;
     white-space: nowrap;
@@ -165,7 +165,7 @@ h1 {
   }
 
 .resourceCount {
-    font-family: "Century Gothic";
+    font-family: "Source Sans Pro";
     font-size: 0.9rem;
     color: #d27a14;
     font-weight: 600;

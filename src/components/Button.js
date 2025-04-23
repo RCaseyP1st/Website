@@ -24,7 +24,7 @@ const StyledWrapper = styled.div`
     text-decoration: none;
     background: #03969b; /* Cyan background */
     color: #fff;
-    font-family: 'Century Gothic', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;

@@ -10,7 +10,7 @@ module.exports = {
         cyan: '#0093a2', // Define a custom cyan color
       },
       fontFamily: {
-        sans: ['Century Gothic', 'sans-serif'], // Use 'Century Gothic' as the primary sans-serif font
+        sans: ['"Source Sans Pro"', 'sans-serif'], // Use 'Century Gothic' as the primary sans-serif font
       },
       backdropFilter: {
         none: "none",

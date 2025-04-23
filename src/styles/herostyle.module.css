@@ -64,7 +64,7 @@
     left: 5%;
     color: white;
     font-size: 2vw; /* Responsive scaling */
-    font-family: "Century Gothic", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     opacity: 0; /* Initially hidden */
     animation: fadeInText 1.5s ease-in-out forwards;
