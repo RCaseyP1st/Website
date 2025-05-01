@@ -22,6 +22,7 @@ const airtableFieldIDs = {
   localAuthority: "fldgtLzx0HcGJ7nOl", // Add Local Authority field ID
   location: "fldTQc0voyHuyXJeZ", // Add Location field ID
   userNumber: "fld1nwuJ9CO1bacYc", // Unique User ID number generator field
+  formattedSubmissionTime: "fldaspdp8NR1PrNka",
 };
 
 const fetchPostcodeDetails = async (postcode) => {
@@ -46,6 +47,13 @@ const fetchPostcodeDetails = async (postcode) => {
     console.error("Error fetching postcode details:", error);
     return null;
   }
+};
+
+const formatDOB = (dobInput) => {
+  if (!dobInput) return "";
+  const date = new Date(dobInput);
+  if (isNaN(date)) return ""; // Invalid date safeguard
+  return date.toLocaleDateString("en-GB"); // Formats to DD/MM/YYYY
 };
 
 // Update function to accept updater functions as arguments
@@ -100,36 +108,35 @@ const updatePostcodeDetails = async (
 const airtableURL =
   "https://api.airtable.com/v0/appESMQNwIowYCCld/Wellbeing%20Review%20request%20form";
 
-  const fetchExistingUserNumbers = async () => {
-    try {
-      const response = await fetch(airtableURL, {
-        headers: {
-          Authorization: `Bearer patSU10Pp0hh1NOgo.7554e4280a027e73e31574edeff1ad25a40803a6aabe8f111f34aa0721c48d80`,
-        },
-      });
-      const data = await response.json();
-      return data.records.map((record) => record.fields["User Number"] || "");
-    } catch (error) {
-      console.error("Error fetching existing user numbers:", error);
-      return [];
-    }
-  };
+const fetchExistingUserNumbers = async () => {
+  try {
+    const response = await fetch(airtableURL, {
+      headers: {
+        Authorization: `Bearer patSU10Pp0hh1NOgo.7554e4280a027e73e31574edeff1ad25a40803a6aabe8f111f34aa0721c48d80`,
+      },
+    });
+    const data = await response.json();
+    return data.records.map((record) => record.fields["User Number"] || "");
+  } catch (error) {
+    console.error("Error fetching existing user numbers:", error);
+    return [];
+  }
+};
 
-  const generateUserNumber = async (name) => {
-    const existingNumbers = await fetchExistingUserNumbers();
-    const firstInitial = name.charAt(0).toUpperCase();
-    const lastInitial =
-      name.charAt(name.lastIndexOf(" ") + 1)?.toUpperCase() || "X";
-    let userNumber;
-  
-    do {
-      const randomNumber = Math.floor(1000 + Math.random() * 9000);
-      userNumber = `#${firstInitial}${randomNumber}${lastInitial}`;
-    } while (existingNumbers.includes(userNumber));
-  
-    return userNumber;
-  };
-  
+const generateUserNumber = async (name) => {
+  const existingNumbers = await fetchExistingUserNumbers();
+  const firstInitial = name.charAt(0).toUpperCase();
+  const lastInitial =
+    name.charAt(name.lastIndexOf(" ") + 1)?.toUpperCase() || "X";
+  let userNumber;
+
+  do {
+    const randomNumber = Math.floor(1000 + Math.random() * 9000);
+    userNumber = `#${firstInitial}${randomNumber}${lastInitial}`;
+  } while (existingNumbers.includes(userNumber));
+
+  return userNumber;
+};
 
 const WellbeingForm = ({ isMinimal }) => {
   // State variables
@@ -159,8 +166,6 @@ const WellbeingForm = ({ isMinimal }) => {
     }
   };
 
-
-
   // Handle postcode changes
   const handlePostcodeChange = async () => {
     console.log("Handling postcode change...");
@@ -184,233 +189,242 @@ const WellbeingForm = ({ isMinimal }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-  // Get the values of name, email, and postcode directly from the input fields
-  const name = document.querySelector("#name")?.value.trim();
-  const email = document.querySelector("#email")?.value.trim();
-  const postcode = document.querySelector("#postcode")?.value.trim();
-
-  // Ensure required fields are filled out
-  if (!name || !email || !postcode) {
-    setErrorMessage("Please fill out all required fields.");
-    return;
-  }
-
-  try {
-    // Generate a unique User Number
-    const generatedUserNumber = await generateUserNumber(name);
-    setUserNumber(generatedUserNumber);
-
-    console.log("Generated User Number:", generatedUserNumber);
-
-    // Use updated regex and format
-    const postcodeRegex = /^[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}$/i;
-    if (!postcodeRegex.test(postcode)) {
-      setErrorMessage(
-        "Invalid postcode format. Please enter a valid UK postcode."
-      );
-      document.querySelector("#postcode")?.focus();
-      return;
-    }
-
-    const formattedPostcode = postcode.replace(
-      /^([A-Z]{1,2}\d{1,2}[A-Z]?)(\d[A-Z]{2})$/i,
-      "$1 $2"
-    );
-
-    const details = await fetchPostcodeDetails(formattedPostcode);
-    if (!details) {
-      setErrorMessage(
-        "Could not retrieve details for the entered postcode. Please confirm it is correct and try again."
-      );
-      return;
-    }
-
-    // Log the fetched details
-    console.log("Details fetched from API:", details);
-
-    setTown(details.postTown || "Unknown");
-    setLocalAuthority(details.adminDistrict || "Unknown");
-    setLocation(details.parish || "Unknown");
-
-    console.log("Postcode details re-fetched successfully:", {
-      town: details.postTown,
-      localAuthority: details.adminDistrict,
-      location: details.parish,
+    const now = new Date();
+    const formattedSubmission = now.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
 
-    // Check eligibility
-    if (!eligibility) {
-      setErrorMessage("Please confirm eligibility.");
-      document.querySelector("#eligibility")?.focus();
+    // Get the values of name, email, and postcode directly from the input fields
+    const name = document.querySelector("#name")?.value.trim();
+    const email = document.querySelector("#email")?.value.trim();
+    const postcode = document.querySelector("#postcode")?.value.trim();
+
+    // Ensure required fields are filled out
+    if (!name || !email || !postcode) {
+      setErrorMessage("Please fill out all required fields.");
       return;
     }
-
-    // Gather form values
-    const formValues = {
-      postcode: formattedPostcode,
-      name: document.querySelector("#name")?.value.trim(),
-      email: document.querySelector("#email")?.value.trim(),
-      phone: document.querySelector("#phone")?.value.trim(),
-      consent: document.querySelector("#consent")?.checked,
-      serviceAccessed: document.querySelector("#serviceAccessed")?.value.trim(),
-      ethnicity: document.querySelector("#ethnicity")?.value.trim(),
-      gender: document.querySelector("#gender")?.value.trim(),
-      dob: document.querySelector("#dob")?.value.trim(),
-      livingWithPregnantPerson: document.querySelector(
-        'input[name="livingWithPregnantPerson"]:checked'
-      )?.value,
-      gestation: document.querySelector("#gestation")?.value.trim(),
-      town, // Updated state variable
-      localAuthority, // Updated state variable
-      location, // Updated state variable
-    };
-
-    // Debugging: Log the form values
-    console.log("Form Values Before Submission:", formValues);
-
-    // Validate required fields
-    const requiredFields = [
-      { key: "postcode", message: "Postcode is required." },
-      { key: "name", message: "Name is required." },
-      { key: "consent", message: "Consent is required.", isBoolean: true },
-      { key: "ethnicity", message: "Ethnicity is required." },
-      { key: "gender", message: "Gender is required." },
-      { key: "dob", message: "Date of Birth is required." },
-      {
-        key: "livingWithPregnantPerson",
-        message: "Living with pregnant person status is required.",
-      },
-      { key: "gestation", message: "Gestation period is required." },
-    ];
-
-    for (const field of requiredFields) {
-      if (
-        (field.isBoolean && !formValues[field.key]) ||
-        (!field.isBoolean && !formValues[field.key]?.trim())
-      ) {
-        setErrorMessage(field.message);
-        document.querySelector(`#${field.key}`)?.focus();
-        return;
-      }
-    }
-
-    // Validate contact methods
-    if (
-      selectedMethods.includes("Microsoft Teams") ||
-      selectedMethods.includes("Zoom")
-    ) {
-      if (!formValues.email) {
-        setErrorMessage("Email is required for Microsoft Teams or Zoom.");
-        document.querySelector("#email")?.focus();
-        return;
-      }
-    }
-
-    if (selectedMethods.includes("Other") && !otherContact?.trim()) {
-      setErrorMessage(
-        "Please specify your preferred contact method under 'Other'."
-      );
-      document.querySelector("#otherContact")?.focus();
-      return;
-    }
-
-    if (selectedMethods.includes("Phone Call")) {
-      if (!formValues.phone) {
-        setErrorMessage("Phone number is required for Phone Call.");
-        document.querySelector("#phone")?.focus();
-        return;
-      }
-      const phonePattern = /^(\+44|0)7\d{9}$/;
-      if (!phonePattern.test(formValues.phone)) {
-        setErrorMessage("Please provide a valid UK phone number.");
-        document.querySelector("#phone")?.focus();
-        return;
-      }
-    }
-
-    // Determine local hub based on postcode
-    const hub = determineHub(formValues.postcode);
-    setLocalHub(hub || "Not Recognised");
-
-    if (hub === "Not Recognised") {
-      console.warn(
-        `Unmapped postcode (${formValues.postcode}) submitted with Local Hub set to "Not Recognised".`
-      );
-    }
-
-    
-
-    // Prepare data for Airtable submission
-    const airtableData = {
-      records: [
-        {
-          fields: {
-            [airtableFieldIDs.name]: formValues.name,
-            [airtableFieldIDs.email]: formValues.email,
-            [airtableFieldIDs.phone]: formValues.phone,
-            [airtableFieldIDs.postcode]: formValues.postcode,
-            [airtableFieldIDs.localHub]: determineHub(formValues.postcode),
-            [airtableFieldIDs.serviceAccessed]: formValues.serviceAccessed,
-            [airtableFieldIDs.ethnicity]: formValues.ethnicity,
-            [airtableFieldIDs.gender]: formValues.gender,
-            [airtableFieldIDs.dob]: formValues.dob,
-            [airtableFieldIDs.livingWithPregnantPerson]:
-              formValues.livingWithPregnantPerson,
-            [airtableFieldIDs.gestation]: formValues.gestation,
-            [airtableFieldIDs.town]: formValues.town, // Include updated Town
-            [airtableFieldIDs.localAuthority]: formValues.localAuthority, // Include updated Local Authority
-            [airtableFieldIDs.location]: formValues.location, // Include updated Location
-            [airtableFieldIDs.preferredContactMethods]: selectedMethods,
-            [airtableFieldIDs.otherContactMethod]: otherContact || null,
-            [airtableFieldIDs.consent]: formValues.consent,
-            [airtableFieldIDs.userNumber]: generatedUserNumber,
-            [airtableFieldIDs.confirmEligibility]: true,
-          },
-        },
-      ],
-    };
-
-    // Log payload before sending
-    console.log("Airtable Payload:", airtableData);
 
     try {
-      const response = await fetch(airtableURL, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer patSU10Pp0hh1NOgo.7554e4280a027e73e31574edeff1ad25a40803a6aabe8f111f34aa0721c48d80`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(airtableData),
-      });
+      // Generate a unique User Number
+      const generatedUserNumber = await generateUserNumber(name);
+      setUserNumber(generatedUserNumber);
 
-      const responseData = await response.json();
-      console.log("Airtable API Response:", responseData);
+      console.log("Generated User Number:", generatedUserNumber);
 
-      if (!response.ok) {
-        console.error("Error from Airtable API:", responseData);
+      // Use updated regex and format
+      const postcodeRegex = /^[A-Z]{1,2}\d{1,2}[A-Z]?\s?\d[A-Z]{2}$/i;
+      if (!postcodeRegex.test(postcode)) {
         setErrorMessage(
-          `Failed to submit the form. Airtable error: ${
-            JSON.stringify(responseData.error) || "Unknown error"
-          }`
+          "Invalid postcode format. Please enter a valid UK postcode."
+        );
+        document.querySelector("#postcode")?.focus();
+        return;
+      }
+
+      const formattedPostcode = postcode.replace(
+        /^([A-Z]{1,2}\d{1,2}[A-Z]?)(\d[A-Z]{2})$/i,
+        "$1 $2"
+      );
+
+      const details = await fetchPostcodeDetails(formattedPostcode);
+      if (!details) {
+        setErrorMessage(
+          "Could not retrieve details for the entered postcode. Please confirm it is correct and try again."
         );
         return;
       }
 
-      setSuccess(true); // Show success message
+      // Log the fetched details
+      console.log("Details fetched from API:", details);
+
+      setTown(details.postTown || "Unknown");
+      setLocalAuthority(details.adminDistrict || "Unknown");
+      setLocation(details.parish || "Unknown");
+
+      console.log("Postcode details re-fetched successfully:", {
+        town: details.postTown,
+        localAuthority: details.adminDistrict,
+        location: details.parish,
+      });
+
+      // Check eligibility
+      if (!eligibility) {
+        setErrorMessage("Please confirm eligibility.");
+        document.querySelector("#eligibility")?.focus();
+        return;
+      }
+
+      // Gather form values
+      const formValues = {
+        postcode: formattedPostcode,
+        name: document.querySelector("#name")?.value.trim(),
+        email: document.querySelector("#email")?.value.trim(),
+        phone: document.querySelector("#phone")?.value.trim(),
+        consent: document.querySelector("#consent")?.checked,
+        serviceAccessed: document
+          .querySelector("#serviceAccessed")
+          ?.value.trim(),
+        ethnicity: document.querySelector("#ethnicity")?.value.trim(),
+        gender: document.querySelector("#gender")?.value.trim(),
+        dob: formatDOB(document.querySelector("#dob")?.value.trim()),
+        livingWithPregnantPerson: document.querySelector(
+          'input[name="livingWithPregnantPerson"]:checked'
+        )?.value,
+        gestation: document.querySelector("#gestation")?.value.trim(),
+        town, // Updated state variable
+        localAuthority, // Updated state variable
+        location, // Updated state variable
+      };
+
+      // Debugging: Log the form values
+      console.log("Form Values Before Submission:", formValues);
+
+      // Validate required fields
+      const requiredFields = [
+        { key: "postcode", message: "Postcode is required." },
+        { key: "name", message: "Name is required." },
+        { key: "consent", message: "Consent is required.", isBoolean: true },
+        { key: "ethnicity", message: "Ethnicity is required." },
+        { key: "gender", message: "Gender is required." },
+        { key: "dob", message: "Date of Birth is required." },
+        {
+          key: "livingWithPregnantPerson",
+          message: "Living with pregnant person status is required.",
+        },
+        { key: "gestation", message: "Gestation period is required." },
+      ];
+
+      for (const field of requiredFields) {
+        if (
+          (field.isBoolean && !formValues[field.key]) ||
+          (!field.isBoolean && !formValues[field.key]?.trim())
+        ) {
+          setErrorMessage(field.message);
+          document.querySelector(`#${field.key}`)?.focus();
+          return;
+        }
+      }
+
+      // Validate contact methods
+      if (
+        selectedMethods.includes("Microsoft Teams") ||
+        selectedMethods.includes("Zoom")
+      ) {
+        if (!formValues.email) {
+          setErrorMessage("Email is required for Microsoft Teams or Zoom.");
+          document.querySelector("#email")?.focus();
+          return;
+        }
+      }
+
+      if (selectedMethods.includes("Other") && !otherContact?.trim()) {
+        setErrorMessage(
+          "Please specify your preferred contact method under 'Other'."
+        );
+        document.querySelector("#otherContact")?.focus();
+        return;
+      }
+
+      if (selectedMethods.includes("Phone Call")) {
+        if (!formValues.phone) {
+          setErrorMessage("Phone number is required for Phone Call.");
+          document.querySelector("#phone")?.focus();
+          return;
+        }
+        const phonePattern = /^(\+44|0)7\d{9}$/;
+        if (!phonePattern.test(formValues.phone)) {
+          setErrorMessage("Please provide a valid UK phone number.");
+          document.querySelector("#phone")?.focus();
+          return;
+        }
+      }
+
+      // Determine local hub based on postcode
+      const hub = determineHub(formValues.postcode);
+      setLocalHub(hub || "Not Recognised");
+
+      if (hub === "Not Recognised") {
+        console.warn(
+          `Unmapped postcode (${formValues.postcode}) submitted with Local Hub set to "Not Recognised".`
+        );
+      }
+
+      // Prepare data for Airtable submission
+      const airtableData = {
+        records: [
+          {
+            fields: {
+              [airtableFieldIDs.name]: formValues.name,
+              [airtableFieldIDs.email]: formValues.email,
+              [airtableFieldIDs.phone]: formValues.phone,
+              [airtableFieldIDs.postcode]: formValues.postcode,
+              [airtableFieldIDs.localHub]: determineHub(formValues.postcode),
+              [airtableFieldIDs.serviceAccessed]: formValues.serviceAccessed,
+              [airtableFieldIDs.ethnicity]: formValues.ethnicity,
+              [airtableFieldIDs.gender]: formValues.gender,
+              [airtableFieldIDs.dob]: formValues.dob,
+              [airtableFieldIDs.livingWithPregnantPerson]:
+                formValues.livingWithPregnantPerson,
+              [airtableFieldIDs.gestation]: formValues.gestation,
+              [airtableFieldIDs.town]: formValues.town, // Include updated Town
+              [airtableFieldIDs.localAuthority]: formValues.localAuthority, // Include updated Local Authority
+              [airtableFieldIDs.location]: formValues.location, // Include updated Location
+              [airtableFieldIDs.preferredContactMethods]: selectedMethods,
+              [airtableFieldIDs.otherContactMethod]: otherContact?.trim() || "N/A",
+              [airtableFieldIDs.consent]: formValues.consent,
+              [airtableFieldIDs.userNumber]: generatedUserNumber,
+              [airtableFieldIDs.confirmEligibility]: true,
+              [airtableFieldIDs.formattedSubmissionTime]: formattedSubmission,
+            },
+          },
+        ],
+      };
+
+      // Log payload before sending
+      console.log("Airtable Payload:", airtableData);
+
+      try {
+        const response = await fetch(airtableURL, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer patSU10Pp0hh1NOgo.7554e4280a027e73e31574edeff1ad25a40803a6aabe8f111f34aa0721c48d80`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(airtableData),
+        });
+
+        const responseData = await response.json();
+        console.log("Airtable API Response:", responseData);
+
+        if (!response.ok) {
+          console.error("Error from Airtable API:", responseData);
+          setErrorMessage(
+            `Failed to submit the form. Airtable error: ${
+              JSON.stringify(responseData.error) || "Unknown error"
+            }`
+          );
+          return;
+        }
+
+        setSuccess(true); // Show success message
+      } catch (error) {
+        console.error("Error submitting to Airtable:", error);
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        );
+      }
     } catch (error) {
-      console.error("Error submitting to Airtable:", error);
+      console.error("Error during form submission:", error);
       setErrorMessage(
-        "An error occurred while submitting the form. Please try again."
+        "An unexpected error occurred during form submission. Please try again."
       );
     }
-  } catch (error) {
-    console.error("Error during form submission:", error);
-    setErrorMessage(
-      "An unexpected error occurred during form submission. Please try again."
-    );
-  }
-};
+  };
 
   // Function to render success message
   const renderSuccessMessage = () => (
@@ -433,7 +447,7 @@ const WellbeingForm = ({ isMinimal }) => {
             "https://parents1st.org.uk/the-other-half-hub")
         }
         style={{
-          backgroundColor: "#D78223",
+          backgroundColor: "#7fbf71",
           color: "white",
           padding: "10px",
           borderRadius: "4px",
@@ -465,9 +479,19 @@ const WellbeingForm = ({ isMinimal }) => {
             Please confirm that your partner is currently under the care of EPUT
             (Essex Partnership University Trust).
           </p>
-          <label className={styles.formlabel}>
+          <label
+            className={styles.formlabel}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center", // Center horizontally
+              gap: "0.5rem", // Adds spacing between checkbox and text
+              marginTop: "1rem",
+              marginBottom: "1rem",
+            }}
+          >
             <input type="checkbox" id="eligibility" />
-            Confirm Eligibility
+            <span>Confirm Eligibility</span>
           </label>
 
           <button
@@ -671,7 +695,7 @@ const WellbeingForm = ({ isMinimal }) => {
             {/* Living with Pregnant Partner */}
             <div className={styles.row}>
               <div className={styles.columnFull}>
-              <label htmlFor="serviceAccessed">
+                <label htmlFor="serviceAccessed">
                   Are you living with your partner?{" "}
                   <span className={styles.required}>*</span>
                 </label>
@@ -773,12 +797,26 @@ const WellbeingForm = ({ isMinimal }) => {
               your consent for this by checking the box below.
             </p>
             <div className={styles.prescreening}>
-            <label className={styles.formlabel}>
-                <input type="checkbox" id="consent" required /> Consent{" "}
-                <span className={styles.required}>
-                  <font color="red">*</font>
+              <label
+                className={styles.formlabel}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.5rem", // Space between checkbox and text
+                  marginTop: "1rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <input type="checkbox" id="consent" required />
+                <span>
+                  Consent{" "}
+                  <span className={styles.required}>
+                    <font color="red">*</font>
+                  </span>
                 </span>
               </label>
+
               <button className={styles.fancyButton} type="submit">
                 Submit
               </button>

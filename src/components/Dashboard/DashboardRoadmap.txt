@@ -1,0 +1,68 @@
+
+THE OTHER-HALF HUB DASHBOARD ROADMAP (AIRTABLE INTEGRATION)
+
+-------------------------------
+CORE DATA METRICS (Already Implemented)
+-------------------------------
+✓ Total Entries
+✓ Completed Reviews (Wellbeing Review Completed?)
+✓ Request-to-Review %
+✓ Average Referrals per Review
+✓ Reviews This Month
+✓ Avg. Turnaround Time (Days)
+✓ Top Signposted Resources (Multi-select field tally)
+✓ Monthly Review Submissions (Created time parsing)
+
+-------------------------------
+NEXT-LEVEL INSIGHTS (Suggested)
+-------------------------------
+• Monthly Completion % Trend
+• Monthly Referrals Volume (total signposts per month)
+• Monthly Avg. Referrals per Review
+• Turnaround Time Trend (by month)
+• Bar chart of most referred services by month
+• Completion Rate by Submission Method or Form Version (if available)
+• Reviews by Area/Region (if postcode or town included)
+• Flagging Overdue Reviews (no completion after 14+ days)
+
+-------------------------------
+FILTERABLE DIMENSIONS (For Sidebar Navigation)
+-------------------------------
+• Gender
+• Ethnicity
+• Age Bracket
+• Referral Source
+• Support Needs (keywords or categories)
+• Form Version (if tracked)
+• Review Completed? (yes/no)
+• Submission Date Range (month/year filtering)
+
+-------------------------------
+UX / VISUAL ENHANCEMENTS
+-------------------------------
+• Dynamic color-coding (e.g. % thresholds)
+• Download/export charts (PDF or PNG)
+• Animated counters (stat tiles)
+• Expandable/collapsible sections
+• Embed-friendly layout (iframe support)
+• Mobile-responsive adjustment
+• Filter persistence (retain filter on refresh)
+
+-------------------------------
+DEPLOYMENT / ACCESS
+-------------------------------
+• Optional access control (URL key, password, or token)
+• GitHub Pages or secure Netlify deployment
+• Print-ready version of charts for reports
+• Toggle for dark/light mode
+
+-------------------------------
+NOTES
+-------------------------------
+All roadmap features assume continued use of Airtable fields such as:
+- Submission Timestamp (raw)
+- Wellbeing Review Completed?
+- Date Completed
+- Resources/Services Signposted
+- Demographics fields (Gender, Ethnicity, Age Group, etc.)
+

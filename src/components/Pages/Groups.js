@@ -373,7 +373,7 @@ const Groups = () => {
           }}
         />
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          className="bg-brandGreen text-white px-4 py-2 rounded-lg hover:bg-brandPink"
           onClick={handleSearch}
         >
           Search
@@ -513,7 +513,7 @@ const Groups = () => {
                 className={`border p-4 rounded-lg mb-2 shadow-lg flex justify-between items-center cursor-pointer`}
                 style={{
                   backgroundColor:
-                    selectedGroup === group.name ? "#b8d7ee" : "white",
+                    selectedGroup === group.name ? "#eef7ee" : "white",
                 }}
                 onClick={() => {
                   setSelectedGroup(group.name);

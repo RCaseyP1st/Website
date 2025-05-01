@@ -1,7 +1,7 @@
 /* Footer Container */
 .footer {
-  background-color: #f8f9fa;
-  border-top: 2px solid #999;
+  background-color: #f8f9fa; /* Light neutral stays */
+  border-top: 2px solid #afafaf; /* brandBlue border */
   padding: 20px;
   text-align: center;
   font-family: "Source Sans Pro", Arial, sans-serif;
@@ -13,10 +13,9 @@
   max-width: 200px;
   height: auto;
   margin-bottom: 15px;
-  box-shadow: none;
-  display: inline-block; /* Override global block display */
-  margin-left: auto; /* Center horizontally */
-  margin-right: auto; /* Center horizontally */
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Footer Text */
@@ -24,6 +23,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #333;
 }
 
 .footerAddress {
@@ -32,21 +32,24 @@
   margin-bottom: 15px;
 }
 
+/* Privacy Policy Link */
 .footerLink {
-  color: #03969b;
+  color: #0093a4; /* brandPink */
   text-decoration: none;
   font-weight: bold;
 }
 
 .footerLink:hover {
   text-decoration: underline;
+  color: #a20b3e; /* darker pink on hover */
 }
 
-/* Social Media Follow Section */
+/* Social Section Title */
 .footerFollow {
   font-weight: bold;
   font-size: 1rem;
   margin: 20px 0 10px;
+  color: #0093a4; /* brandBlue */
 }
 
 .footerSocial {
@@ -56,129 +59,89 @@
   gap: 25px;
 }
 
-/* General Icon Styling */
+/* Icon Sizing */
 .iconSvg {
   width: 40px;
   height: 40px;
-  transition: transform 0.4s ease, opacity 0.3s ease; /* Smooth scaling */
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
-/* X (Twitter) Icon Styling */
+/* Twitter Icon */
 .twitterIcon {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  background-color: #000; /* Black background */
-  border-radius: 8px; /* Rounded corners */
+  background-color: #000;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Ensure animation stays within bounds */
-  transition: transform 0.4s ease; /* Smooth growth effect */
+  transition: transform 0.4s ease;
 }
 
 .twitterIcon:hover {
-  transform: scale(1.5); /* The entire icon grows */
+  transform: scale(1.5);
 }
 
 .twitterIcon:hover .iconSvg {
-  animation: twitterWipe 1.5s ease-in-out forwards; /* Animation only on hover */
-  transform: scale(1.5); /* White element grows slightly more */
+  animation: twitterWipe 1.5s ease-in-out forwards;
+  transform: scale(1.5);
 }
 
 @keyframes twitterWipe {
-  0% {
-    clip-path: inset(0 50% 0 50%); /* Hidden in the middle */
-  }
-  25% {
-    clip-path: inset(0 0 0 0); /* Fully visible */
-  }
-  50% {
-    transform: translateY(-2px); /* Subtle shake */
-  }
-  75% {
-    transform: translateY(2px);
-  }
-  100% {
-    transform: translateY(0); /* Back to center */
-  }
+  0%   { clip-path: inset(0 50% 0 50%); }
+  25%  { clip-path: inset(0 0 0 0); }
+  50%  { transform: translateY(-2px); }
+  75%  { transform: translateY(2px); }
+  100% { transform: translateY(0); }
 }
 
-/* Facebook Icon Styling */
+/* Facebook */
 .facebookIcon {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  background-color: #1877f2; /* Facebook blue */
-  border-radius: 50%; /* Circular background */
+  background-color: #1877f2;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Keep animation inside the circle */
-  transition: transform 0.4s ease; /* Smooth growth effect */
+  transition: transform 0.4s ease;
 }
 
 .facebookIcon:hover {
-  transform: scale(1.5); /* The entire icon grows */
+  transform: scale(1.5);
 }
 
 .facebookIcon:hover .iconSvg {
-  animation: facebookErraticBounce 1.5s ease-in-out forwards; /* Animation only on hover */
-  transform: scale(1.5); /* White element grows slightly more */
+  animation: facebookErraticBounce 1.5s ease-in-out forwards;
+  transform: scale(1.5);
 }
 
 @keyframes facebookErraticBounce {
-  0% {
-    transform: translate(0, 0) scale(1); /* Start at center */
-  }
-  25% {
-    transform: translate(5px, -5px) rotate(15deg) scale(1.1); /* Top-right */
-  }
-  50% {
-    transform: translate(-5px, -10px) rotate(-10deg) scale(1.2); /* Top-left */
-  }
-  75% {
-    transform: translate(0px, 10px) rotate(5deg) scale(1.1); /* Bottom-center */
-  }
-  100% {
-    transform: translate(0, 0) rotate(0deg) scale(1); /* Back to center */
-  }
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(5px, -5px) rotate(15deg) scale(1.1); }
+  50%  { transform: translate(-5px, -10px) rotate(-10deg) scale(1.2); }
+  75%  { transform: translate(0px, 10px) rotate(5deg) scale(1.1); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
-/* LinkedIn Icon Styling */
+/* LinkedIn */
 .linkedinIcon {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  background-color: #0a66c2; /* LinkedIn blue */
-  border-radius: 8px; /* Rounded square */
+  background-color: #0a66c2;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Keep animation inside bounds */
-  transition: transform 0.4s ease; /* Smooth growth effect */
+  transition: transform 0.4s ease;
 }
 
 .linkedinIcon:hover {
-  transform: scale(1.5); /* The entire icon grows */
+  transform: scale(1.5);
 }
 
 .linkedinIcon:hover .iconSvg {
-  animation: linkedinShake 0.8s ease-in-out infinite alternate; /* Animation only on hover */
-  transform: scale(1.5); /* White element grows slightly more */
+  animation: linkedinShake 0.8s ease-in-out infinite alternate;
+  transform: scale(1.5);
 }
 
 @keyframes linkedinShake {
-  0% {
-    transform: rotate(0deg) scale(1.2);
-  }
-  25% {
-    transform: rotate(5deg) scale(1.25);
-  }
-  50% {
-    transform: rotate(-5deg) scale(1.25);
-  }
-  100% {
-    transform: rotate(0deg) scale(1.2);
-  }
+  0%   { transform: rotate(0deg) scale(1.2); }
+  25%  { transform: rotate(5deg) scale(1.25); }
+  50%  { transform: rotate(-5deg) scale(1.25); }
+  100% { transform: rotate(0deg) scale(1.2); }
 }

@@ -7,16 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cyan: '#0093a2', // Define a custom cyan color
+        brandBlue: '#0093a4',  // Main blue
+        brandGreen: '#7fbf71', // Accent green
+        brandPink: '#d60b52',  // Accent pink
       },
       fontFamily: {
-        sans: ['"Source Sans Pro"', 'sans-serif'], // Use 'Century Gothic' as the primary sans-serif font
+        sans: ['"Source Sans Pro"', 'sans-serif'],
       },
       backdropFilter: {
         none: "none",
-        blur: "blur(16px)", // Add blur for glassmorphism
+        blur: "blur(16px)",
       },
     },
+    
   },
   plugins: [],
 };

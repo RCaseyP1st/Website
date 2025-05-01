@@ -1,26 +1,26 @@
 .customScrollbar {
-    scrollbar-width:thin; /* Firefox */
-    scrollbar-color: #0196aa transparent; /* Firefox */
-  
-    /* Webkit Scrollbar */
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background-color: #0196aa; /* Thumb color */
-      border-radius: 20px; /* Rounded thumb */
-      border: 3px solid transparent; /* Padding around thumb */
-    }
+  scrollbar-width: thin;
+  scrollbar-color: #0093a4 transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
   }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #0093a4;
+    border-radius: 20px;
+    border: 3px solid transparent;
+  }
+}
+
 
   .customScrollbarRed {
     scrollbar-width: thin;
-    scrollbar-color: #d92727 transparent; /* Red scrollbar for Firefox */
+    scrollbar-color: #0093a4 transparent; /* Red scrollbar for Firefox */
   
     &::-webkit-scrollbar {
       width: 8px;
@@ -31,7 +31,7 @@
     }
   
     &::-webkit-scrollbar-thumb {
-      background-color: #d92727; /* Red scrollbar thumb */
+      background-color: #0093a4; /* Red scrollbar thumb */
       border-radius: 20px;
       border: 3px solid transparent;
     }

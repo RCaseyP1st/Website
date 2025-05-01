@@ -4,8 +4,6 @@ import styles from "../../styles/customscrollbar.module.css";
 import {
   IconArrowBigLeftLinesFilled,
   IconArrowBigRightLinesFilled,
-  IconArrowBigDownLinesFilled,
-  IconArrowBigUpLinesFilled,
 } from "@tabler/icons-react";
 
 const resources = [
@@ -107,7 +105,7 @@ export const AnimatedCards = () => {
         WebkitBackdropFilter: "blur(16px) saturate(180%)",
         backgroundColor: "rgba(17, 25, 40, 0.75)",
         borderRadius: "36px",
-        border: "4px solid #03969b",
+        border: "4px solid #0093a4",
         backgroundImage: `url(${resources[activeIndex].imgSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -161,7 +159,7 @@ export const AnimatedCards = () => {
                     borderRadius: "24px",
                     objectFit: "cover",
                     boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-                    border: "4px solid #03969b",
+                    border: "4px solid #0093a4",
                   }}
                 />
               </motion.div>
@@ -191,7 +189,7 @@ export const AnimatedCards = () => {
                 WebkitBackdropFilter: "blur(16px) saturate(180%)",
                 backgroundColor: "rgba(255, 255, 255, 0.63)",
                 borderRadius: "12px",
-                border: "4px solid #03969b",
+                border: "4px solid #0093a4",
                 display: "flex", // Enable flex layout
                 flexDirection: "column", // Stack children vertically
                 padding: "1rem", // Adjust padding
@@ -203,7 +201,7 @@ export const AnimatedCards = () => {
                 style={{
                   margin: "0", // Remove unnecessary margin
                   marginBottom: "0.5rem", // Adjust gap below the title
-                  color: "#03969b",
+                  color: "#0093a4",
                 }}
               >
                 {resources[activeIndex].title}
@@ -231,12 +229,19 @@ export const AnimatedCards = () => {
                 href={resources[activeIndex].link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-500 text-white text-sm font-semibold rounded-full px-4 py-2 hover:bg-orange-500 transition-all duration-300"
+                className="text-white text-sm font-semibold rounded-full px-4 py-2 transition-all duration-300"
                 style={{
+                  backgroundColor: "#0093a4", // Brand Blue
                   border: "2px solid rgb(255, 255, 255)",
                   textDecoration: "none", // Remove underline
                   alignSelf: "center", // Center the button horizontally
                 }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#7fbf71")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#0093a4")
+                }
               >
                 Visit Website
               </a>
@@ -254,7 +259,7 @@ export const AnimatedCards = () => {
           onClick={handlePrev}
           className="h-9 w-9 rounded-full bg-gray-100 dark:bg-neutral-800 flex items-center justify-center"
           style={{
-            outline: "2px solid orange",
+            outline: "2px solid #7fbf71", // Brand Green
             outlineOffset: "4px",
           }}
         >
@@ -264,7 +269,7 @@ export const AnimatedCards = () => {
           onClick={handleNext}
           className="h-9 w-9 rounded-full bg-gray-100 dark:bg-neutral-800 flex items-center justify-center"
           style={{
-            outline: "2px solid orange",
+            outline: "2px solid #7fbf71", // Brand Green
             outlineOffset: "4px",
           }}
         >

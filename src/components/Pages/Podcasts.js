@@ -151,7 +151,7 @@ const PodcastHeader = ({ podcasts, onSelect }) => {
         WebkitBackdropFilter: "blur(16px) saturate(180%)",
         backgroundColor: "rgba(17, 25, 40, 0.75)",
         borderRadius: "36px",
-        border: "4px solid #03969b",
+        border: "4px solid #0093a4",
         backgroundImage: `url(${podcasts[activeIndex].imgSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -226,7 +226,7 @@ const PodcastHeader = ({ podcasts, onSelect }) => {
                     borderRadius: "24px",
                     objectFit: "cover",
                     boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-                    border: "4px solid #03969b",
+                    border: "4px solid #0093a4",
                   }}
                 />
               </motion.div>
@@ -254,7 +254,7 @@ const PodcastHeader = ({ podcasts, onSelect }) => {
                 WebkitBackdropFilter: "blur(16px) saturate(180%)",
                 backgroundColor: "rgba(255, 255, 255, 0.63)",
                 borderRadius: "12px",
-                border: "4px solid #03969b",
+                border: "4px solid #0093a4",
                 padding: "1rem", // Padding inside the box
               }}
             >
@@ -262,7 +262,7 @@ const PodcastHeader = ({ podcasts, onSelect }) => {
               <h3
                 className="text-3xl font-bold"
                 style={{
-                  color: "#03969b",
+                  color: "#0093a4",
                   margin: "0",
                   marginBottom: "0.5rem",
                 }}
@@ -289,7 +289,7 @@ const PodcastHeader = ({ podcasts, onSelect }) => {
                 href={podcastDetails.spotifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 text-white text-sm font-semibold rounded-full px-4 py-2 flex items-center gap-2 hover:bg-green-700 transition-all duration-300"
+                className="bg-brandPink text-white text-sm font-semibold rounded-full px-4 py-2 flex items-center gap-2 hover:bg-brandGreen transition-all duration-300"
                 style={{
                   textAlign: "center",
                   width: "fit-content",
@@ -495,7 +495,7 @@ const PodcastEpisodes = ({ episodes }) => {
     padding: "0.5rem 1rem",
     borderRadius: "8px",
     border: "1px solid #d3d3d3",
-    backgroundColor: "#03969b",
+    backgroundColor: "#7fbf71",
     color: "#fff",
     margin: "0 0.25rem",
     cursor: "pointer",
@@ -627,7 +627,7 @@ const PodcastEpisodes = ({ episodes }) => {
                 href={episode.spotifyUrl} // Link to the Spotify episode
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 text-white text-sm font-semibold rounded-full px-4 py-2 flex items-center gap-2 hover:bg-green-700 transition-all duration-300"
+                className="bg-brandPink text-white text-sm font-semibold rounded-full px-4 py-2 flex items-center gap-2 hover:bg-brandGreen transition-all duration-300"
                 style={{
                   position: "absolute", // Position relative to the parent
                   right: "1rem", // Align to the right

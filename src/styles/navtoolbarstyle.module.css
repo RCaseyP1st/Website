@@ -1,16 +1,15 @@
-/* Navigation Toolbar Styles */
 .navigationToolbar {
   background-color: #f8f9fa;
-  border-top: 2px solid #999;
-  border-bottom: 2px solid #999;
+  border-top: 2px solid #afafaf; /* brandBlue */
+  border-bottom: 2px solid #afafaf;
   padding: 0;
-  position: sticky; /* Make NavBar sticky */
-  top: 53px; /* Adjust based on Header's height */
-  z-index: 500; /* Ensure it's above the content */
+  position: sticky;
+  top: 53px;
+  z-index: 500;
   width: 100%;
   display: flex;
   justify-content: center;
-  transition: top 0.3s ease; /* Smooth adjustment */
+  transition: top 0.3s ease;
 }
 
 .navigationToolbar .navList {
@@ -30,48 +29,47 @@
   padding-bottom: 0;
 }
 
-/* Divider between navigation items in the main NavBar */
 .navigationToolbar .navItem::after {
   content: '';
   position: absolute;
+  margin-bottom: 0px;
   right: 0;
-  top: 20%; /* Centered vertically */
-  height: 60%; /* Divider height (30% above and 30% below centerline) */
-  width: 2px; /* Divider thickness */
-  background-color: #999;
+  top: 20%;
+  height: 60%;
+  width: 2px;
+  background-color: #7fbf71; /* Subtle divider */
 }
 
 .navigationToolbar .navItem:last-child::after {
-  content: none; /* No divider after the last NavBar item */
+  content: none;
 }
 
 .navigationToolbar .navLink {
   text-decoration: none;
-  font-family: "Sana Sans Alt W00 Regular", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #03969b;
+  color: #0093a4; /* brandBlue */
   white-space: nowrap;
   display: inline-block;
   position: relative;
   padding: 0.4em 0;
   line-height: 1;
-  border: none; /* Removes default button styling */
+  border: none;
   background: none;
 }
 
 .navigationToolbar .navLink:hover {
-  color: #d27a14;
+  color: #d60b52; /* brandPink */
 }
 
-/* Orange underline effect for main NavBar links */
 .navigationToolbar .navLink::before,
 .navigationToolbar .navLink::after {
   content: '';
   position: absolute;
-  bottom: 0.18em; /* Position underline slightly below the text */
+  bottom: 0.18em;
   height: 2px;
-  background-color: #d27a14;
+  background-color: #d60b52; /* brandPink underline */
   transition: width 0.3s ease;
   width: 0;
 }
@@ -89,17 +87,16 @@
   width: 50%;
 }
 
-/* Dropdown Styles */
 .navigationToolbar .dropdownContent {
   position: absolute;
-  top: calc(100% + 2px); /* Ensures dropdown starts below the bottom border */
+  top: calc(100% + 2px);
   left: 0;
-  width: 100%; /* Match width of parent */
+  width: 100%;
   background-color: #f8f9fa;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   padding: 0;
   margin: 0;
-  list-style: none; /* Remove bullets */
+  list-style: none;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
@@ -111,7 +108,6 @@
   visibility: visible;
 }
 
-/* Dropdown items */
 .navigationToolbar .dropdownContent li {
   position: relative;
   text-align: center;
@@ -121,55 +117,42 @@
   word-break: break-word;
 }
 
-.navigationToolbar .dropdownContent li:not(:first-child)::before {
-  content: '';
-  position: absolute;
-  top: 0; /* Place divider above */
-  left: 20%;
-  width: 60%;
-  height: 1px;
-  background-color: #999;
-}
-
+.navigationToolbar .dropdownContent li:not(:first-child)::before,
 .navigationToolbar .dropdownContent li:not(:last-child)::after {
   content: '';
   position: absolute;
-  bottom: 0; /* Place divider below */
   left: 20%;
   width: 60%;
   height: 1px;
-  background-color: #999;
+  background-color: #afafaf;
 }
 
-/* Dropdown buttons */
 .navigationToolbar .dropdownContent li button {
   background: none;
   border: none;
-  font-family: "Sana Sans Alt W00 Regular", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
-  color: #03969b;
+  color: #0093a4; /* brandBlue */
   line-height: 1.3;
   padding: 0;
   cursor: pointer;
   text-align: center;
   transition: color 0.3s ease;
-  position: relative; /* Needed for the underline effect */
+  position: relative;
 }
 
-/* Hover state for dropdown buttons */
 .navigationToolbar .dropdownContent li button:hover {
-  color: #d27a14;
+  color: #d60b52; /* brandPink */
 }
 
-/* Orange underline effect for dropdown items */
 .navigationToolbar .dropdownContent li button::before,
 .navigationToolbar .dropdownContent li button::after {
   content: '';
   position: absolute;
-  bottom: 0; /* Position underline at the bottom */
+  bottom: 0;
   height: 2px;
-  background-color: #d27a14;
+  background-color: #d60b52; /* brandPink underline */
   transition: width 0.3s ease;
   width: 0;
 }
@@ -184,10 +167,9 @@
 
 .navigationToolbar .dropdownContent li button:hover::before,
 .navigationToolbar .dropdownContent li button:hover::after {
-  width: 50%; /* Expand underline on hover */
+  width: 50%;
 }
 
-/* Hamburger menu */
 .hamburgerMenu {
   display: none;
   flex-direction: column;
@@ -197,12 +179,11 @@
 .hamburgerMenu div {
   width: 25px;
   height: 2px;
-  background-color: #03969b;
+  background-color: #0093a4; /* brandBlue */
   margin: 4px 0;
   transition: all 0.3s ease;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   .navigationToolbar .navLink {
     font-size: 0.9rem;

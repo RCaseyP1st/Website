@@ -26,6 +26,7 @@
     "react-router-dom": "^6.28.0",
     "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5",
+    "recharts": "^2.15.3",
     "styled-components": "^6.1.14",
     "tailwind-merge": "^2.5.5",
     "web-vitals": "^4.2.4"
@@ -35,8 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://github.com/RCaseyP1st/Website.git"
+    "predeploy": "git add . && git commit -m \"Auto-commit before deploy\" && git push",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [

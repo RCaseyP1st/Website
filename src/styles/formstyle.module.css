@@ -6,7 +6,7 @@
   background-color: #f4f4f9;
 }
 
-/* General form container styling */
+/* Main container */
 .wellbeingFormContainer {
   width: 90%;
   margin: 0 auto;
@@ -16,95 +16,57 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #f4f4f9;
-  font-family: "Source Sans Pro", sans-serif;
   color: #333;
 }
 
-/* Pre-screening container */
+/* Pre-screening section */
 .prescreening {
   width: 90%;
-  /* Use 60% width for the form container */
   text-align: center;
-  /* Ensure it doesn't get too wide on large screens */
   margin: 0 auto;
-  /* Center the form horizontally */
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
 }
 
+/* Consent & Submit Wrapper */
 .consentandsubmit {
   text-align: center;
-  /* Centers the text and button horizontally */
   margin-top: 20px;
-  /* Adds spacing above the container */
   line-height: 1.6;
-  /* Adjusts the line spacing */
 }
 
-
-.prescreening label {
-  font-size: 18px;
-  display: block;
-  margin-top: 30px;
-}
-
-/* Main form container */
+/* Form wrapper */
 .formContainer {
   width: 95%;
-  /* Use 60% width for the form container */
   max-width: 90%;
-  /* Ensure it doesn't get too wide on large screens */
   margin: 0 auto;
-  /* Center the form horizontally */
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Radio button group styling */
-.radioGroup {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.radioGroup label {
-  font-size: 16px;
-  font-weight: normal;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-
-}
-
-
 /* Form headers */
 .formh1,
 .formh2 {
   font-size: 28px;
   font-weight: bold;
-  color: #0392a2;
+  color: #0093a4; /* Parents 1st Blue */
   text-align: center;
 }
 
-/* Labels for input fields */
+/* Labels */
 .formlabel {
   display: flex;
-  align-items: center; /* Align checkbox and text vertically */
+  align-items: center;
   margin: 10px 0 5px;
   font-size: 18px;
   font-weight: bold;
-  color: #0392a2;
+  color: #0093a4;
 }
 
-.formlabel input[type="checkbox"] {
-  margin-right: 8px; /* Add space between the checkbox and the text */
-}
-
-
-/* Input field styling */
+/* Inputs */
 .input {
   width: 100%;
   padding: 8px 12px;
@@ -115,77 +77,38 @@
   box-sizing: border-box;
 }
 
-/* Error message styling */
-.error {
-  color: red;
-  font-size: 16px;
-  margin-top: 15px;
-  display: block;
-}
-
-/* Consent statement styling */
-.consent {
-  font-size: 12px;
-  font-style: italic;
-  color: #333;
-  margin-top: 15px;
-  line-height: 1.6;
-}
-
-/* Checkbox group styling */
-/* Checkbox group styling */
-.checkboxGroup {
-  margin: 10px 0;
-}
-
-.checkboxGroup label {
-  display: flex; /* Align checkbox and text horizontally */
-  align-items: center; /* Vertically center align text and checkbox */
-  gap: 10px; /* Add space between the checkbox and the text */
-  background-color: #f1f1f1;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-weight: 600;
-  color: #03969b; /* Update text color */
-}
-
-.checkboxGroup label:hover {
-  background-color: #e0e0e0;
-}
-
-.checkboxGroup input[type="checkbox"] {
-  margin: 0; /* Remove any additional margin around the checkbox */
-}
-
-
-/* Textarea styling (for "Other" contact method) */
+/* Textarea */
 .textarea {
-  width: calc(100% - 2px);
-  /* Match input fields exactly */
+  width: 100%;
   height: 80px;
   margin: 5px 0 20px;
-  /* Same as input margins */
   padding: 8px 12px;
-  /* Same as input padding */
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
-  /* Ensures padding and border fit within width */
   resize: none;
 }
 
+/* Error */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
 
+/* Required Asterisk */
+.required {
+  color: red;
+  font-weight: bold;
+  margin-left: 4px;
+}
 
-
-/* Button styling */
+/* Buttons */
 .fancyButton {
   padding: 15px 30px;
   margin-top: 20px;
-  background-color: #d78223;
+  background-color: #7fbf71; /* Parents 1st Pink */
   color: white;
   border: none;
   border-radius: 4px;
@@ -196,19 +119,15 @@
 }
 
 .fancyButton:hover {
-  background-color: #b06b1a;
+  background-color: #d60b52; /* darker pink */
 }
 
-/* Success message styling */
-/* Success message styling */
+/* Success screen */
 .successMessage {
   width: 60%;
-  /* Use 60% width like the prescreening section */
   text-align: center;
   max-width: 800px;
-  /* Ensure it doesn't get too wide on large screens */
   margin: 0 auto;
-  /* Center the message horizontally */
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -218,7 +137,7 @@
 .successMessage h1 {
   font-size: 28px;
   font-weight: bold;
-  color: #0392a2;
+  color: #0093a4;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -232,7 +151,7 @@
 
 .successMessage button {
   padding: 15px 30px;
-  background-color: #d78223;
+  background-color: #7fbf71;
   color: white;
   border: none;
   border-radius: 4px;
@@ -243,55 +162,69 @@
 }
 
 .successMessage button:hover {
-  background-color: #b06b1a;
+  background-color: #d60b52;
 }
 
-
-.required {
-  color: red;
-  font-weight: bold;
-  margin-left: 4px;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-/* Row styling to contain two columns */
+/* Row/Col */
 .row {
   display: flex;
   gap: 20px;
-  /* Space between columns */
   margin-bottom: 20px;
-  /* Space below each row */
   justify-content: space-between;
-  /* Ensures both columns stretch evenly */
 }
 
-/* Column styling for two fields */
 .column {
   flex: 1;
   min-width: 45%;
-  /* Prevent columns from being too small */
 }
 
-/* Full-width column for single-field rows */
 .columnFull {
   flex: 1;
-  /* Take up the entire width */
 }
 
+/* Checkbox groups */
+.checkboxGroup label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  color: #0093a4;
+}
 
+.checkboxGroup label:hover {
+  background-color: #e0e0e0;
+}
 
-/* Responsive design for mobile */
+.checkboxGroup input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Radio group */
+.radioGroup {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.radioGroup label {
+  font-size: 16px;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Mobile tweaks */
 @media (max-width: 600px) {
-
   .formContainer,
   .prescreening {
     width: 90%;
-    /* Fill most of the screen width with small gaps on either side */
     padding: 15px;
   }
 

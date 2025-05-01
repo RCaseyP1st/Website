@@ -7,7 +7,7 @@
   
   .bar {
     background-color: #f8f9fa; /* Light grey background */
-    color: #0093a2; /* Text color */
+    color: #7fbf71; /* Text color */
     font-size: 16px; /* Reduce font size */
     cursor: pointer;
     border-radius: 5px;
@@ -21,7 +21,7 @@
 }
   
   .bar:hover {
-    color:#d87f23;
+    color:#d60b52;
     background-color: #f9f9f9;
   }
   
@@ -79,7 +79,7 @@
   }
   
   .submitButton {
-    background-color: #d87f23;
+    background-color: #7fbf71;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -89,7 +89,7 @@
   }
   
   .submitButton:hover {
-    background-color: #b3641b;
+    background-color: #d60b52;
   }
   
   /* Initial state (hidden) */

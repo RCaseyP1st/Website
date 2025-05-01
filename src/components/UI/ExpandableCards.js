@@ -139,7 +139,8 @@ export const ExpandableCards = () => {
   // Scroll Lock for Expanded Card
   useEffect(() => {
     if (activeCard) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden"; // Prevent scrolling
       document.body.style.paddingRight = `${scrollbarWidth}px`; // Maintain scrollbar width
     } else {
@@ -231,10 +232,19 @@ export const ExpandableCards = () => {
                 href={resource.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-500 text-white text-sm font-semibold rounded-full px-4 py-2 hover:bg-orange-500 transition-all duration-300"
-                style={{ border: "2px solid rgb(255, 255, 255)",
-                  textDecoration: "none"
-                 }}
+                className="text-white text-sm font-semibold rounded-full px-4 py-2 transition-all duration-300"
+                style={{
+                  backgroundColor: "#0093a4",
+                  border: "2px solid #fff",
+                  textDecoration: "none",
+                  alignSelf: "center", // if needed
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#7fbf71")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#0093a4")
+                }
               >
                 Visit Website
               </a>
@@ -352,14 +362,21 @@ export const ExpandableCards = () => {
                   href={activeCard.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-500 text-white text-sm font-semibold rounded-full px-4 py-2 hover:bg-orange-500 transition-all duration-300"
+                  className="text-white text-sm font-semibold rounded-full px-4 py-2 transition-all duration-300"
                   style={{
+                    backgroundColor: "#0093a4", // Brand Blue
                     width: "calc(50% - 1rem)",
                     textAlign: "center",
-                    border: "2px solid rgb(255, 255, 255)",
-                    whiteSpace: "nowrap", // Ensures text stays on a single line
-                    textDecoration: "none"
+                    border: "2px solid #fff",
+                    whiteSpace: "nowrap",
+                    textDecoration: "none",
                   }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#7fbf71")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#0093a4")
+                  }
                 >
                   Visit Website
                 </motion.a>
@@ -367,14 +384,21 @@ export const ExpandableCards = () => {
                 {/* Close Button */}
                 <motion.button
                   onClick={() => setActiveCard(null)}
-                  className="bg-red-500 text-white text-sm font-semibold rounded-full px-4 py-2 hover:bg-orange-500 transition-all duration-300"
+                  className="text-white text-sm font-semibold rounded-full px-4 py-2 transition-all duration-300"
                   style={{
+                    backgroundColor: "#d60b52", // Brand Pink
                     width: "calc(50% - 1rem)",
                     textAlign: "center",
-                    border: "2px solid rgb(255, 255, 255)",
-                    whiteSpace: "nowrap", // Ensures text stays on a single line
-                    textDecoration: "none"
+                    border: "2px solid #fff",
+                    whiteSpace: "nowrap",
+                    textDecoration: "none",
                   }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#7fbf71")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#d60b52")
+                  }
                 >
                   Close
                 </motion.button>

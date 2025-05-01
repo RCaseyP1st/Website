@@ -1,230 +1,199 @@
-@font-face {
-    font-family: "Sana Sans Alt W00 Regular";
-    src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot");
-    src: url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.eot?#iefix")
-        format("embedded-opentype"),
-      url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.woff2") format("woff2"),
-      url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.woff") format("woff"),
-      url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.ttf") format("truetype"),
-      url("https://db.onlinewebfonts.com/t/d676911db6699aa6748801b8ef3cd8b9.svg#Sana Sans Alt W00 Regular")
-        format("svg");
-  }
-  
-  .header {
-    -webkit-text-size-adjust: 100%;
-    font-family: "Sana Sans Alt W00 Regular", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    color: #3e3e3e;
-    font-size: 1em;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1004;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    background: #ffffff;
-    border-bottom: 2px solid #e6e6e6;
-    height: 55px;
-  }
-  
-  /* Dynamic header height for different screen sizes */
-  @media (max-width: 1024px) {
-    .header {
-      height: 50px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .header {
-      height: 45px;
-    }
-  }
-  
-  .leftToolbar,
-  .rightToolbar {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .rightToolbar {
-    margin-right: 15px;
-  }
-  
-  .headerLogo {
-    height: 55%;
-    width: auto;
-    max-height: 55px;
-    margin-right: 10px;
-    transition: height 0.3s ease;
-  }
-  
-  .toolbarNumbers {
-    color: #0093a2 !important;
-    font-weight: bold;
-    margin-right: 5px;
-    display: inline-block;
-  }
-  
+.header {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  color: #3e3e3e;
+  font-size: 1em;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1004;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background: #ffffff;
+  border-bottom: 2px solid #afafaf; /* brandBlue border */
+  height: 55px;
+}
+
+@media (max-width: 1024px) {
+  .header { height: 50px; }
+}
+
+@media (max-width: 768px) {
+  .header { height: 45px; }
+}
+
+.leftToolbar,
+.rightToolbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.rightToolbar {
+  margin-right: 15px;
+}
+
+.headerLogo {
+  height: 55%;
+  width: auto;
+  max-height: 55px;
+  margin-right: 10px;
+  transition: height 0.3s ease;
+}
+
+.toolbarNumbers {
+  color: #0093a4 !important; /* brandBlue */
+  font-weight: bold;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.activities,
+.members {
+  margin-right: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.activities a,
+.members a {
+  color: #333;
+  text-decoration: none;
+}
+
+.activities a:hover,
+.members a:hover {
+  color: #d60b52 !important; /* brandPink hover */
+}
+
+.activities a:visited,
+.members a:visited {
+  color: #333;
+}
+
+.helpLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.helpLink:hover {
+  color: #d60b52; /* brandPink */
+}
+
+.centerToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.centerToolbar form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.searchInput {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 250px;
+  margin: 0;
+  transition: width 0.3s ease;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.searchIconSvg {
+  transform: scaleX(-1);
+  transition: transform 0.2s ease;
+}
+
+.searchButton:hover .searchIconSvg {
+  animation: wobble 0.5s ease-in-out forwards;
+}
+
+@keyframes wobble {
+  0% { transform: scaleX(-1) rotate(0deg); }
+  25% { transform: scaleX(-1) rotate(-15deg); }
+  50% { transform: scaleX(-1) rotate(15deg); }
+  75% { transform: scaleX(-1) rotate(-10deg); }
+  100% { transform: scaleX(-1) rotate(0deg); }
+}
+
+.crisisButton {
+  background-color: #df0000;
+  border: 2px solid #df0000;
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 0.8rem;
+  padding: 10px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s, color 0.3s, stroke 0.3s, width 0.3s ease;
+}
+
+.crisisButton span {
+  transition: color 0.3s ease;
+}
+
+.crisisButton:hover {
+  background-color: white;
+  color: #df0000;
+}
+
+.crisisButton:hover .exclamationTriangle svg {
+  stroke: #df0000;
+}
+
+.crisisButton:not(:hover) span {
+  color: white;
+}
+
+.exclamationTriangle svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
   .activities,
   .members {
-    margin-right: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #333;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
+    display: none;
   }
-  
-  .activities a,
-  .members a {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .activities a:hover,
-  .members a:hover {
-    color: #0093a2 !important;
-  }
-  
-  .activities a:visited,
-  .members a:visited {
-    color: #333;
-  }
-  
-  .helpLink {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
-    margin-left: 10px;
-  }
-  
-  .helpLink:hover {
-    color: #0093a2;
-  }
-  
-  /* Center the toolbar with the search bar and icon horizontally aligned */
-  .centerToolbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .centerToolbar form {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
+
   .searchInput {
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    width: 250px;
-    margin: 0;
-    transition: width 0.3s ease;
+    width: 150px;
   }
-  
-  .searchButton {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .searchIconSvg {
-    transform: scaleX(-1);
-    transition: transform 0.2s ease;
-  }
-  
-  .searchButton:hover .searchIconSvg {
-    animation: wobble 0.5s ease-in-out forwards;
-  }
-  
-  @keyframes wobble {
-    0% {
-      transform: scaleX(-1) rotate(0deg);
-    }
-    25% {
-      transform: scaleX(-1) rotate(-15deg);
-    }
-    50% {
-      transform: scaleX(-1) rotate(15deg);
-    }
-    75% {
-      transform: scaleX(-1) rotate(-10deg);
-    }
-    100% {
-      transform: scaleX(-1) rotate(0deg);
-    }
-  }
-  
-  /* "In Crisis?" Button Styles */
+}
+
+@media (max-width: 480px) {
   .crisisButton {
-    background-color: #df0000;
-    border: 2px solid #df0000;
-    color: white;
-    font-family: "Hind", sans-serif;
-    font-size: 0.8rem;
-    padding: 10px 15px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.5s, color 0.3s, stroke 0.3s, width 0.3s ease;
+    padding: 5px 8px;
+    font-size: 0.7rem;
   }
-  
-  .crisisButton span {
-    transition: color 0.3s ease;
-  }
-  
-  .crisisButton:hover {
-    background-color: white;
-    color: #df0000;
-  }
-  
-  .crisisButton:hover .exclamationTriangle svg {
-    stroke: #df0000;
-  }
-  
-  .crisisButton:not(:hover) span {
-    color: white;
-  }
-  
-  .exclamationTriangle svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    .activities,
-    .members {
-      display: none;
-    }
-  
-    .searchInput {
-      width: 150px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .crisisButton {
-      padding: 5px 8px;
-      font-size: 0.7rem;
-    }
-  }
-  
+}

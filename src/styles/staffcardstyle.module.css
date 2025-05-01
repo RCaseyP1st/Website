@@ -38,14 +38,14 @@
   /* Title styling */
   .staffTitle {
     font-size: 1rem;
-    color: #03969b; /* Match theme color */
+    color: #0093a4; /* Match theme color */
     margin: 5px 0;
   }
   
   /* Link styling */
   .staffLink {
     font-size: 0.9rem;
-    color: #0073e6; /* Match link colors */
+    color: #d60b52; /* Match link colors */
     text-decoration: none;
   }
   
@@ -68,7 +68,7 @@
   }
   
   .profileLink {
-    color: #0073e6;
+    color: #d60b52;
     text-decoration: none;
   }
   

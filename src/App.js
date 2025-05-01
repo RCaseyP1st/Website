@@ -17,6 +17,7 @@ import Podcasts from "./components/Pages/Podcasts";
 import Youtube from "./components/Pages/Youtube";
 import Groups from "./components/Pages/Groups";
 import NationalResources from "./components/Pages/NationalResources";
+import Dashboard from "./components/Dashboard/Dashboard";
 import globalStyles from "./styles/globalstyle.module.css";
 
 import "./App.css";
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="/groups" element={<Groups isMinimal={false} />} />
           <Route path="/national-resources" element={<NationalResources isMinimal={false} />} />
           <Route path="/feedback" element={<FeedbackForm isMinimal={false} />} />
+          <Route path="/dashboard" element={<Dashboard isMinimal={false} />} />
 
 
           {/* Minimal Routes */}
@@ -92,6 +94,7 @@ const App = () => {
           <Route path="/minimal-groups" element={<Groups isMinimal={true} />} />
           <Route path="/minimal-national-resources" element={<NationalResources isMinimal={true} />} />
           <Route path="/minimal-feedback" element={<FeedbackForm isMinimal={true} />} />
+          <Route path="/minimal-dashboard" element={<Dashboard isMinimal={true} />} />
 
 
           {/* 404 Fallback */}

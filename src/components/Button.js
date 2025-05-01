@@ -22,7 +22,7 @@ const StyledWrapper = styled.div`
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    background: #03969b; /* Cyan background */
+    background: #7fbf71; /* Cyan background */
     color: #fff;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem;
@@ -37,7 +37,7 @@ const StyledWrapper = styled.div`
   }
 
   .learn-more:hover {
-    background: #d78223; /* Orange hover */
+    background: #d60b52; /* Orange hover */
     transform: scale(1.05); /* Slight hover effect */
   }
 
@@ -57,7 +57,7 @@ const StyledWrapper = styled.div`
     position: relative;
     width: 0.75rem;
     height: 0.75rem;
-    border: 2px solid #03969b; /* Cyan */
+    border: 2px solid #0093a4; /* Cyan */
     border-width: 2px 2px 0 0;
     transform: rotate(45deg);
     transition: all 0.3s ease-in-out;

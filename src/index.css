@@ -27,8 +27,8 @@ code {
 
 /* Global Scrollbar Styles */
 * {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #0196aa transparent; /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #0093a4 transparent; /* brandBlue */
 }
 
 *::-webkit-scrollbar {
@@ -40,7 +40,7 @@ code {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #0196aa; /* Thumb color */
+  background-color: #0093a4;
   border-radius: 20px; /* Rounded thumb */
   border: 3px solid transparent; /* Padding around thumb */
 }
