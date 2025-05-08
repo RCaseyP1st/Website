@@ -36,8 +36,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-  "predeploy": "git add . && git commit -m \"Auto-commit before deploy\" && git push work main",
-  "deploy": "npm run build && gh-pages -d build -r https://github.com/RCaseyP1st/Website.git"
+    "deploy": "npm run commit-and-push && npm run gh-deploy",
+    "commit-and-push": "git add . && git commit -m \"Auto-commit before deploy\" || echo \"No changes to commit\" && git push",
+    "gh-deploy": "gh-pages -d build -r git@github-work:RCaseyP1st/Website.git"
   },
   "eslintConfig": {
     "extends": [
