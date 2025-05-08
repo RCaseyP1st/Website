@@ -1,14 +1,14 @@
 // utils/chartColors.js
 
 const chartColors = [
-    "#00b4e6", // Light Blue
-    "#ff8400", // Orange
-    "#33cc33", // Light Green
-    "#d60b52", // Pink
-    "#7fbf71", // Green
-    "#8854c0", // Purple
-    "#0093a4"  // Teal
-  ];
+  "rgba(0, 180, 230, 0.75)",   // Light Blue
+  "rgba(255, 132, 0, 0.75)",   // Orange
+  "rgba(51, 204, 51, 0.75)",   // Light Green
+  "rgba(214, 11, 82, 0.75)",   // Pink
+  "rgba(127, 191, 113, 0.75)", // Green
+  "rgba(136, 84, 192, 0.75)",  // Purple
+  "rgba(0, 147, 164, 0.75)"    // Teal
+];
 
   export const SECTION_TAILWIND_CLASSES = {
     "All Data": {

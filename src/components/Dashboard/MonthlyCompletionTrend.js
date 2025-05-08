@@ -38,7 +38,7 @@ const MonthlyCompletionTrend = ({ records }) => {
     }));
 
   return (
-    <div className="mt-12 w-full">
+    <>
       <h2 className="text-xl font-semibold text-brandPink mb-4">Monthly Completion % Trend</h2>
       {chartData.length === 0 ? (
         <p className="text-gray-500">No data available.</p>
@@ -50,13 +50,16 @@ const MonthlyCompletionTrend = ({ records }) => {
             <Tooltip formatter={(value) => `${value}%`} />
             <Bar dataKey="percentage">
               {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={chartColors[index % chartColors.length]}
+                />
               ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       )}
-    </div>
+    </>
   );
 };
 

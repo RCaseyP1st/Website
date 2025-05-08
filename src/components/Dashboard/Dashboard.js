@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from "recharts";
 import WellbeingReviews from "./WellbeingReviews";
 import UserDemo from "./UserDemo";
 import ReferralAnalytics from "./ReferralAnalytics";
 import ActivityByArea from "./ActivityByArea";
 import { SECTION_TAILWIND_CLASSES } from "./chartColors";
+import DashboardLayout from "./DashboardLayout";
 
 const Dashboard = () => {
   const [records, setRecords] = useState([]);
@@ -33,79 +25,61 @@ const Dashboard = () => {
             headers: {
               Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
             },
-            params: {
-              pageSize: 100,
-            },
+            params: { pageSize: 100 },
           }
         );
 
-        const fetchedRecords = response.data.records;
-        setRecords(fetchedRecords);
+        const fetched = response.data.records;
+        setRecords(fetched);
 
         const countMap = {};
-        fetchedRecords.forEach((record) => {
-          const tags = record.fields["Resources/Services Signposted"] || [];
+        fetched.forEach((rec) => {
+          const tags = rec.fields["Resources/Services Signposted"] || [];
           tags.forEach((tag) => {
             countMap[tag] = (countMap[tag] || 0) + 1;
           });
         });
 
-        const sorted = Object.entries(countMap)
+        const topChart = Object.entries(countMap)
           .sort((a, b) => b[1] - a[1])
           .slice(0, 7)
           .map(([name, count]) => ({ name, count }));
+        setChartData(topChart);
 
-        setChartData(sorted);
-
-        const parseDate = (input) => {
-          return input ? new Date(input) : null;
-        };
-
+        const parseDate = (input) => (input ? new Date(input) : null);
         const monthlyMap = {};
         const turnaroundList = [];
 
-        fetchedRecords.forEach((rec) => {
-          const raw = rec.fields["Submission Timestamp (raw)"];
-          const submitted = parseDate(raw);
+        fetched.forEach((rec) => {
+          const submitted = parseDate(rec.fields["Submission Timestamp (raw)"]);
           if (!submitted) return;
-
-          const label = submitted.toLocaleString("default", {
-            month: "short",
-            year: "numeric",
-          });
-
+          const label = submitted.toLocaleString("default", { month: "short", year: "numeric" });
           monthlyMap[label] = (monthlyMap[label] || 0) + 1;
 
-          const completedRaw = rec.fields["Date Completed"];
-          const completed = parseDate(completedRaw);
+          const completed = parseDate(rec.fields["Date Completed"]);
           if (completed && completed > submitted) {
             const days = (completed - submitted) / (1000 * 60 * 60 * 24);
             turnaroundList.push(days);
           }
         });
 
-        const sortedMonthly = Object.entries(monthlyMap)
+        const monthlySorted = Object.entries(monthlyMap)
           .sort(([a], [b]) => new Date(a) - new Date(b))
           .map(([month, count]) => ({ month, count }));
+        setMonthlySubmissionData(monthlySorted);
 
-        setMonthlySubmissionData(sortedMonthly);
-
-        const avg = turnaroundList.length
-          ? (
-              turnaroundList.reduce((a, b) => a + b, 0) / turnaroundList.length
-            ).toFixed(1)
-          : "–";
-
+        const avg =
+          turnaroundList.length > 0
+            ? (turnaroundList.reduce((a, b) => a + b, 0) / turnaroundList.length).toFixed(1)
+            : "–";
         setAvgTurnaround(avg);
       } catch (err) {
-        console.error("Error fetching Airtable data:", err);
+        console.error("Airtable error:", err);
       }
     };
 
     fetchRecords();
   }, []);
-
-  const sectionColors = ["teal", "blue", "pink", "green", "purple"];
 
   const sectionList = [
     "All Data",
@@ -128,15 +102,12 @@ const Dashboard = () => {
       {sectionList.map((section) => {
         const { bg, text, hoverBg, hoverText } = SECTION_TAILWIND_CLASSES[section] || {};
         const isActive = activeSection === section;
-  
         return (
           <button
             key={section}
             onClick={() => setActiveSection(section)}
             className={`block w-full text-left px-3 py-2 mb-1 rounded-md text-sm font-medium transition ${
-              isActive
-                ? `${bg} ${text}`
-                : `text-gray-700 ${hoverBg} ${hoverText}`
+              isActive ? `${bg} ${text}` : `text-gray-700 ${hoverBg} ${hoverText}`
             }`}
           >
             {section}
@@ -145,51 +116,47 @@ const Dashboard = () => {
       })}
     </div>
   );
-  
 
-  const renderMain = () => (
-    <div className="ml-64 p-6">
-      {activeSection === "Wellbeing Reviews" && (
-        <WellbeingReviews
-          records={records}
-          avgTurnaround={avgTurnaround}
-          chartData={chartData}
-          monthlySubmissionData={monthlySubmissionData}
-        />
-      )}
-      {activeSection === "User Demographics" && <UserDemo records={records} />}
-
-      {activeSection === "Referral Analytics" && (
-  <ReferralAnalytics records={records} isMinimal={true} />
-)}
-
-
-
-      {activeSection === "Activity by Area" && (
-        <ActivityByArea records={records} isMinimal={true} />
-      )}
-
-      {activeSection === "All Data" && (
-        <div className="space-y-12">
+  const renderSection = () => {
+    switch (activeSection) {
+      case "All Data":
+        return (
+          <>
+            <WellbeingReviews
+              records={records}
+              avgTurnaround={avgTurnaround}
+              chartData={chartData}
+              monthlySubmissionData={monthlySubmissionData}
+            />
+            <UserDemo records={records} />
+            <ReferralAnalytics records={records} />
+            <ActivityByArea records={records} />
+          </>
+        );
+      case "Wellbeing Reviews":
+        return (
           <WellbeingReviews
             records={records}
             avgTurnaround={avgTurnaround}
             chartData={chartData}
             monthlySubmissionData={monthlySubmissionData}
           />
-          <UserDemo records={records} isMinimal={true} />
-          <ReferralAnalytics records={records} />
-
-          <ActivityByArea records={records} isMinimal={true} />
-        </div>
-      )}
-    </div>
-  );
+        );
+      case "User Demographics":
+        return <UserDemo records={records} />;
+      case "Referral Analytics":
+        return <ReferralAnalytics records={records} />;
+      case "Activity by Area":
+        return <ActivityByArea records={records} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="flex">
       {renderSidebar()}
-      {renderMain()}
+      <DashboardLayout>{renderSection()}</DashboardLayout>
     </div>
   );
 };

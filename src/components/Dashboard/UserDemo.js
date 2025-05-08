@@ -7,6 +7,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import DashboardSectionWrapper from "./DashboardSectionWrapper";
 
 const COLORS = ["#0093a4", "#d60b52", "#7fbf71", "#007cab", "#8854c0"];
 
@@ -27,65 +28,73 @@ const UserDemo = ({ records }) => {
   }, {});
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">User Demographics</h1>
+    <DashboardSectionWrapper>
+      <div className="w-full">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">User Demographics</h1>
+      </div>
+
       <div className="flex flex-wrap justify-center gap-16">
-  {/* Gender Pie */}
-  <div className="w-[400px] max-w-full flex flex-col items-center">
-    <h2 className="text-xl font-semibold text-brandBlue mb-2">Gender Distribution</h2>
-    <ResponsiveContainer width="100%" height={320}>
-      <PieChart>
-        <Pie
-          data={prepareChartData(genderCounts)}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={120}
-          fill="#8884d8"
-          label
-        >
-          {prepareChartData(genderCounts).map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
-    </ResponsiveContainer>
-  </div>
+        {/* Gender Pie */}
+        <div className="w-[400px] max-w-full flex flex-col items-center">
+          <h2 className="text-xl font-semibold text-brandBlue mb-2">
+            Gender Distribution
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <PieChart>
+              <Pie
+                data={prepareChartData(genderCounts)}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                fill="#8884d8"
+                label
+              >
+                {prepareChartData(genderCounts).map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
 
- {/* Ethnicity Pie */}
-<div className="w-[400px] max-w-full flex flex-col items-center">
-  <h2 className="text-xl font-semibold text-brandGreen mb-2">Ethnicity Distribution</h2>
-  <ResponsiveContainer width="100%" height={320}>
-    <PieChart>
-      <Pie
-        data={prepareChartData(ethnicityCounts)}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={120}
-        fill="#8884d8"
-        label
-      >
-        {prepareChartData(ethnicityCounts).map((entry, index) => (
-          <Cell
-            key={`eth-cell-${index}`}
-            fill={COLORS[(index + 4) % COLORS.length]} // <-- start from color index 3
-          />
-        ))}
-      </Pie>
-      <Tooltip />
-      <Legend />
-    </PieChart>
-  </ResponsiveContainer>
-</div>
-
-</div>
-
-    </div>
+        {/* Ethnicity Pie */}
+        <div className="w-[400px] max-w-full flex flex-col items-center">
+          <h2 className="text-xl font-semibold text-brandGreen mb-2">
+            Ethnicity Distribution
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <PieChart>
+              <Pie
+                data={prepareChartData(ethnicityCounts)}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                fill="#8884d8"
+                label
+              >
+                {prepareChartData(ethnicityCounts).map((entry, index) => (
+                  <Cell
+                    key={`eth-cell-${index}`}
+                    fill={COLORS[(index + 4) % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </DashboardSectionWrapper>
   );
 };
 

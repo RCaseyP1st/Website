@@ -32,7 +32,7 @@ const MonthlyReferralsVolume = ({ records }) => {
     .map(([month, count]) => ({ month, count }));
 
   return (
-    <div className="mt-12 w-full">
+    <>
       <h2 className="text-xl font-semibold text-brandBlue mb-4">Monthly Referrals Volume</h2>
       {chartData.length === 0 ? (
         <p className="text-gray-500">No referral data available.</p>
@@ -44,13 +44,16 @@ const MonthlyReferralsVolume = ({ records }) => {
             <Tooltip />
             <Bar dataKey="count">
               {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={chartColors[index % chartColors.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={chartColors[index % chartColors.length]}
+                />
               ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       )}
-    </div>
+    </>
   );
 };
 
