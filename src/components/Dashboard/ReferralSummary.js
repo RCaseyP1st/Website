@@ -1,17 +1,12 @@
 // ReferralSummary.js
 import React from "react";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
 import Counter from "../UI/Counter";
 import DropOffAnalysis from "./DropOffAnalysis";
 import EscalationsByHub from "./EscalationsByHub";
-
+import CarersAssessmentByHub from "./CarersAssessmentByHub";
+import AllContactMethods from "./AllContactMethods";
 
 const ReferralSummary = ({ records, allRecords }) => {
   const totalReferralsMade = records.length;
@@ -132,13 +127,18 @@ const ReferralSummary = ({ records, allRecords }) => {
             <Tooltip />
           </PieChart>
         </ResponsiveContainer>
-
       </div>
       <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-      <DropOffAnalysis records={records} />
+        <DropOffAnalysis records={records} />
       </div>
       <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-      <EscalationsByHub records={records} />
+        <EscalationsByHub records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
+        <CarersAssessmentByHub records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
+        <AllContactMethods records={records} />
       </div>
     </DashboardSectionWrapper>
   );
