@@ -30,6 +30,7 @@ const Dashboard = () => {
         );
 
         const fetched = response.data.records;
+        console.log("🔎 Airtable Records:", fetched); // ⬅️ Here’s your debug output
         setRecords(fetched);
 
         const countMap = {};
@@ -53,7 +54,10 @@ const Dashboard = () => {
         fetched.forEach((rec) => {
           const submitted = parseDate(rec.fields["Submission Timestamp (raw)"]);
           if (!submitted) return;
-          const label = submitted.toLocaleString("default", { month: "short", year: "numeric" });
+          const label = submitted.toLocaleString("default", {
+            month: "short",
+            year: "numeric",
+          });
           monthlyMap[label] = (monthlyMap[label] || 0) + 1;
 
           const completed = parseDate(rec.fields["Date Completed"]);
@@ -70,7 +74,10 @@ const Dashboard = () => {
 
         const avg =
           turnaroundList.length > 0
-            ? (turnaroundList.reduce((a, b) => a + b, 0) / turnaroundList.length).toFixed(1)
+            ? (
+                turnaroundList.reduce((a, b) => a + b, 0) /
+                turnaroundList.length
+              ).toFixed(1)
             : "–";
         setAvgTurnaround(avg);
       } catch (err) {
@@ -100,14 +107,17 @@ const Dashboard = () => {
         <h2 className="text-xl font-bold text-gray-700">Dashboard</h2>
       </div>
       {sectionList.map((section) => {
-        const { bg, text, hoverBg, hoverText } = SECTION_TAILWIND_CLASSES[section] || {};
+        const { bg, text, hoverBg, hoverText } =
+          SECTION_TAILWIND_CLASSES[section] || {};
         const isActive = activeSection === section;
         return (
           <button
             key={section}
             onClick={() => setActiveSection(section)}
             className={`block w-full text-left px-3 py-2 mb-1 rounded-md text-sm font-medium transition ${
-              isActive ? `${bg} ${text}` : `text-gray-700 ${hoverBg} ${hoverText}`
+              isActive
+                ? `${bg} ${text}`
+                : `text-gray-700 ${hoverBg} ${hoverText}`
             }`}
           >
             {section}

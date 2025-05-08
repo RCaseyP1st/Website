@@ -2,6 +2,7 @@ import React from "react";
 import MonthlyCompletionTrend from "./MonthlyCompletionTrend";
 import MonthlyReferralsVolume from "./MonthlyReferralsVolume";
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
+import MonthlyAvgReferrals from "./MonthlyAvgReferrals";
 
 const ReferralAnalytics = ({ records }) => {
   const referralCount = records.reduce((acc, rec) => {
@@ -42,6 +43,7 @@ const ReferralAnalytics = ({ records }) => {
       {/* Charts */}
       <MonthlyCompletionTrend records={records} />
       <MonthlyReferralsVolume records={records} />
+      <MonthlyAvgReferrals records={records} />
     </DashboardSectionWrapper>
   );
 };
