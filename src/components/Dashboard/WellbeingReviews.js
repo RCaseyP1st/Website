@@ -147,7 +147,7 @@ const WellbeingReviews = ({
       </div>
 
       {/* Monthly Submissions */}
-      <div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
         <h2 className="text-xl font-semibold text-brandBlue mb-4">
           Monthly Review Submissions
         </h2>

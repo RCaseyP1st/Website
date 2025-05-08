@@ -29,7 +29,7 @@ const ReferralAnalytics = ({ records }) => {
         </h1>
 
       {/* List of Top Referrals */}
-      <div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
         <h2 className="text-xl font-semibold text-brandPink mb-4">
           Top 10 Referred Services
         </h2>
@@ -43,13 +43,25 @@ const ReferralAnalytics = ({ records }) => {
       </div>
 
       {/* Charts */}
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <MonthlyCompletionTrend records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <MonthlyReferralsVolume records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <MonthlyAvgReferrals records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <MonthlyTurnaroundTrend records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <Top5ServicesByMonth records={records} />
+      </div>      
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <TopResourcesAllTime records={records} />
-      <DropOffAnalysis records={records} />
+      </div>
+      
 
     </DashboardSectionWrapper>
   );

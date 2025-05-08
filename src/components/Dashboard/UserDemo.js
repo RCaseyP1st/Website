@@ -33,7 +33,7 @@ const UserDemo = ({ records }) => {
         <h1 className="text-3xl font-bold text-gray-800 mb-6">User Demographics</h1>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-16">
+      <div className="flex flex-wrap justify-center bg-white p-6 shadow-md rounded-xl border mb-4">
         {/* Gender Pie */}
         <div className="w-[400px] max-w-full flex flex-col items-center">
           <h2 className="text-xl font-semibold text-brandBlue mb-2">

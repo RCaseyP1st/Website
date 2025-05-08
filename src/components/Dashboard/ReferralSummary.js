@@ -10,6 +10,8 @@ import {
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
 import Counter from "../UI/Counter";
 import DropOffAnalysis from "./DropOffAnalysis";
+import EscalationsByHub from "./EscalationsByHub";
+
 
 const ReferralSummary = ({ records, allRecords }) => {
   const totalReferralsMade = records.length;
@@ -134,6 +136,9 @@ const ReferralSummary = ({ records, allRecords }) => {
       </div>
       <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <DropOffAnalysis records={records} />
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
+      <EscalationsByHub records={records} />
       </div>
     </DashboardSectionWrapper>
   );

@@ -16,6 +16,7 @@ const ActivityByArea = ({ records }) => {
   return (
     <DashboardSectionWrapper>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Activity by Area</h1>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <h2 className="text-xl font-semibold text-brandGreen mb-4">
         Reviews by Location
       </h2>
@@ -26,7 +27,10 @@ const ActivityByArea = ({ records }) => {
           </li>
         ))}
       </ul>
+      </div>
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
       <ReviewsByRegion records={records} />
+      </div>
     </DashboardSectionWrapper>
   );
 };
