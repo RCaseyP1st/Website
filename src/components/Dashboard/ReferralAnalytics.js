@@ -3,6 +3,7 @@ import MonthlyCompletionTrend from "./MonthlyCompletionTrend";
 import MonthlyReferralsVolume from "./MonthlyReferralsVolume";
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
 import MonthlyAvgReferrals from "./MonthlyAvgReferrals";
+import MonthlyTurnaroundTrend from "./MonthlyTurnaroundTrend";
 
 const ReferralAnalytics = ({ records }) => {
   const referralCount = records.reduce((acc, rec) => {
@@ -44,6 +45,7 @@ const ReferralAnalytics = ({ records }) => {
       <MonthlyCompletionTrend records={records} />
       <MonthlyReferralsVolume records={records} />
       <MonthlyAvgReferrals records={records} />
+      <MonthlyTurnaroundTrend records={records} />
     </DashboardSectionWrapper>
   );
 };
