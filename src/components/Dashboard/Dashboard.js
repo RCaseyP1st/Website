@@ -1,3 +1,4 @@
+// Dashboard.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import WellbeingReviews from "./WellbeingReviews";
@@ -6,13 +7,19 @@ import ReferralAnalytics from "./ReferralAnalytics";
 import ActivityByArea from "./ActivityByArea";
 import { SECTION_TAILWIND_CLASSES } from "./chartColors";
 import DashboardLayout from "./DashboardLayout";
+import ReferralSummary from "./ReferralSummary";
 
 const Dashboard = () => {
   const [records, setRecords] = useState([]);
-  const [chartData, setChartData] = useState([]);
   const [monthlySubmissionData, setMonthlySubmissionData] = useState([]);
   const [avgTurnaround, setAvgTurnaround] = useState("–");
   const [activeSection, setActiveSection] = useState("All Data");
+  const [selectedHub, setSelectedHub] = useState("Essex-wide");
+
+  const filterByHub = (records, hub) => {
+    if (hub === "Essex-wide") return records;
+    return records.filter((rec) => rec.fields["Local EPUT Hub"] === hub);
+  };
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -30,22 +37,8 @@ const Dashboard = () => {
         );
 
         const fetched = response.data.records;
-        console.log("🔎 Airtable Records:", fetched); // ⬅️ Here’s your debug output
+        console.log("🔎 Airtable Records:", fetched);
         setRecords(fetched);
-
-        const countMap = {};
-        fetched.forEach((rec) => {
-          const tags = rec.fields["Resources/Services Signposted"] || [];
-          tags.forEach((tag) => {
-            countMap[tag] = (countMap[tag] || 0) + 1;
-          });
-        });
-
-        const topChart = Object.entries(countMap)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 7)
-          .map(([name, count]) => ({ name, count }));
-        setChartData(topChart);
 
         const parseDate = (input) => (input ? new Date(input) : null);
         const monthlyMap = {};
@@ -90,6 +83,7 @@ const Dashboard = () => {
 
   const sectionList = [
     "All Data",
+    "Referral Summary", 
     "Wellbeing Reviews",
     "User Demographics",
     "Referral Analytics",
@@ -128,36 +122,40 @@ const Dashboard = () => {
   );
 
   const renderSection = () => {
+    const filtered = filterByHub(records, selectedHub);
+
     switch (activeSection) {
       case "All Data":
         return (
           <>
             <WellbeingReviews
-              records={records}
+              records={filtered}
               avgTurnaround={avgTurnaround}
-              chartData={chartData}
               monthlySubmissionData={monthlySubmissionData}
             />
-            <UserDemo records={records} />
-            <ReferralAnalytics records={records} />
-            <ActivityByArea records={records} />
+            <UserDemo records={filtered} />
+            <ReferralAnalytics records={filtered} />
+            <ActivityByArea records={filtered} />
           </>
         );
+        case "Referral Summary":
+          return <ReferralSummary records={filtered} allRecords={records} />;
+        
+
       case "Wellbeing Reviews":
         return (
           <WellbeingReviews
-            records={records}
+            records={filtered}
             avgTurnaround={avgTurnaround}
-            chartData={chartData}
             monthlySubmissionData={monthlySubmissionData}
           />
         );
       case "User Demographics":
-        return <UserDemo records={records} />;
+        return <UserDemo records={filtered} />;
       case "Referral Analytics":
-        return <ReferralAnalytics records={records} />;
+        return <ReferralAnalytics records={filtered} />;
       case "Activity by Area":
-        return <ActivityByArea records={records} />;
+        return <ActivityByArea records={filtered} />;
       default:
         return null;
     }
@@ -166,7 +164,12 @@ const Dashboard = () => {
   return (
     <div className="flex">
       {renderSidebar()}
-      <DashboardLayout>{renderSection()}</DashboardLayout>
+      <DashboardLayout
+        selectedHub={selectedHub}
+        setSelectedHub={setSelectedHub}
+      >
+        {renderSection()}
+      </DashboardLayout>
     </div>
   );
 };

@@ -47,7 +47,7 @@ const MonthlyTurnaroundTrend = ({ records }) => {
         month: "short",
         year: "numeric",
       }),
-      average: count > 0 ? (totalDays / count).toFixed(2) : 0,
+      average: count > 0 ? Math.round((totalDays / count) * 100) / 100 : 0,
     }));
 
   return (

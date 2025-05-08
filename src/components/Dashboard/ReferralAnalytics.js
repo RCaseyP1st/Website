@@ -4,6 +4,10 @@ import MonthlyReferralsVolume from "./MonthlyReferralsVolume";
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
 import MonthlyAvgReferrals from "./MonthlyAvgReferrals";
 import MonthlyTurnaroundTrend from "./MonthlyTurnaroundTrend";
+import TopResourcesAllTime from "./TopResourcesAllTime";
+import Top5ServicesByMonth from "./Top5ServicesByMonth";
+import DropOffAnalysis from "./DropOffAnalysis";
+
 
 const ReferralAnalytics = ({ records }) => {
   const referralCount = records.reduce((acc, rec) => {
@@ -20,12 +24,9 @@ const ReferralAnalytics = ({ records }) => {
 
   return (
     <DashboardSectionWrapper>
-      {/* Title */}
-      <div className="w-full flex justify-center">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Referral Analytics
+      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Referral Analytics
         </h1>
-      </div>
 
       {/* List of Top Referrals */}
       <div>
@@ -46,6 +47,10 @@ const ReferralAnalytics = ({ records }) => {
       <MonthlyReferralsVolume records={records} />
       <MonthlyAvgReferrals records={records} />
       <MonthlyTurnaroundTrend records={records} />
+      <Top5ServicesByMonth records={records} />
+      <TopResourcesAllTime records={records} />
+      <DropOffAnalysis records={records} />
+
     </DashboardSectionWrapper>
   );
 };

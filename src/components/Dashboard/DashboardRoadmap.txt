@@ -15,42 +15,43 @@ CORE DATA METRICS (Complete)
 -------------------------------
 NEXT-LEVEL INSIGHTS (In Progress / Suggested)
 -------------------------------
-⚙️ Monthly Completion % Trend (submission vs. completion exists, monthly chart pending)
-⚙️ Monthly Referrals Volume (referral data exists, chart not yet built)
-❌ Monthly Avg. Referrals per Review
-❌ Turnaround Time Trend (monthly)
-❌ Bar Chart: Most referred services by month
-❌ Completion Rate by Submission Method or Form Version (form data not yet available)
-⚙️ Reviews by Area/Region (postcode data present, no map/chart yet)
-❌ Flagging Overdue Reviews (e.g. no completion after 14+ days)
+✓ Monthly Completion % Trend
+✓ Monthly Referrals Volume
+✓ Monthly Avg. Referrals per Review
+✓ Turnaround Time Trend (monthly)
+✓ Bar Chart: Most referred services by month
+✓ Reviews by Area/Region (Local EPUT Hub based)
+🔜 Flagging Overdue Reviews (e.g. no completion after 14+ days)
 
 Additional Ideas:
-• Drop-off Point Breakdown (e.g. WBR Sent but no completion)
-• Completion Rate by Preferred Contact Method
-• Most Delayed Stage (e.g. average time between submission and review)
+• Drop-off Point Breakdown (e.g. WBR Sent but no completion) ❌
+• Completion Rate by Preferred Contact Method ❌
+• Most Delayed Stage (e.g. average time between submission and review) ❌
+• Completion Rate by Submission Method or Form Version ❌
 
 -------------------------------
 FILTERABLE DIMENSIONS (Data Present, UI Pending)
 -------------------------------
-⚙️ Gender
-⚙️ Ethnicity
-⚙️ Age Bracket
-⚙️ Referral Source
+✓ Gender
+✓ Ethnicity
+✓ Age Bracket
+✓ Referral Source
+✓ Review Completed? (yes/no)
+✓ Submission Date Range (month/year filtering to add)
+✓ Region / Hub (from Local EPUT Hub field)
 ❌ Support Needs (keyword/category tagging required)
 ❌ Form Version (not currently tracked)
-✓ Review Completed? (yes/no)
-⚙️ Submission Date Range (month/year filtering to add)
 
 -------------------------------
 UX / VISUAL ENHANCEMENTS
 -------------------------------
 ✓ Dynamic color-coding (e.g. % thresholds)
-⚙️ Download/export charts (e.g. to PNG or PDF)
+🔜 Download/export charts (e.g. to PNG or PDF)
 ✓ Animated counters (stat tiles)
-⚙️ Expandable/collapsible sections
+🔜 Expandable/collapsible sections
 ✓ Embed-friendly layout (iframe support confirmed)
 ✓ Mobile-responsive adjustment
-❌ Filter persistence (retain filter on refresh)
+🔜 Filter persistence (retain filter on refresh)
 
 -------------------------------
 DEPLOYMENT / ACCESS
@@ -68,69 +69,43 @@ All roadmap features assume continued use of Airtable fields such as:
 - Wellbeing Review Completed?
 - Date Completed
 - Resources/Services Signposted
-- Preferred Method of Contact
+- Local EPUT Hub (instead of postcode)
 - Demographics fields (Gender, Ethnicity, Age Group, etc.)
+- Referral Source
 
+-------------------------------
+✅ IMPLEMENTATION OPPORTUNITIES BASED ON CURRENT FIELDS
+-------------------------------
 
-***
+CORE METRICS:
+- Total entries (✓)
+- Completed reviews (✓)
+- Avg referrals (✓)
+- Turnaround time (✓)
+- Monthly submissions (✓)
+- Top resources (✓)
 
-📊 If your focus is "Next-Level Insights" (data depth):
-Monthly Completion % Trend
+NEXT-LEVEL CHARTS:
+- Monthly Completion % Trend (✓)
+- Monthly Referrals Volume (✓)
+- Monthly Avg Referrals (✓)
+- Turnaround Trend (✓)
+- Region Breakdown by Local Hub (✓)
+- Overdue Reviews Flagging (🔜)
 
-✅ Data exists
+FILTERABLE DATA:
+- Gender, Ethnicity, Age Bracket, Referral Source (✓)
+- Region (✓ via Local EPUT Hub)
+- Completed? (✓)
+- Submission date range (✓)
 
-🔜 You need to group completions vs submissions by month and calculate %
+UNSUPPORTED UNTIL NEW FIELDS EXIST:
+- Form Version, Support Needs Keyword Analysis, Drop-off Point Funnel
 
-Suggested chart: Line chart with two lines (Submissions vs. Completions) or a % bar per month
-
-Monthly Referrals Volume
-
-✅ Data exists (signposted resources)
-
-🔜 Tally number of signposts by month
-
-Suggested chart: Stacked bar or line chart for total per month
-
-Reviews by Area/Region
-
-✅ Postcode exists
-
-🔜 Use first part of postcode (or map integration with clusters if desired)
-
-Optional: Use Postcodes.io or simple string matching for grouping
-
-🧭 If your focus is "Better Navigation & Filtering":
-Submission Date Range Filter
-
-🔜 Add dropdowns for Month/Year or a calendar picker
-
-Should apply across all charts and metrics dynamically
-
-Filter by Gender / Ethnicity / Age
-
-✅ Data exists
-
-🔜 You need UI buttons or dropdowns in the sidebar that filter all applicable charts
-
-Consider using React context or URL query strings to persist the selected filter
-
-🎨 If your focus is "UX Polish & Usability":
-Expandable/Collapsible Sections
-
-🔜 Add toggles to each metric group so users can collapse insights or filters
-
-Helps with mobile usability too
-
-Download Charts
-
-🔜 Add buttons using html2canvas or Chart.js toBase64Image() to export visuals
-
-Optional: Include print styles for PDF reports
-
-Filter Persistence
-
-❌ Currently not done
-
-🔜 Store selected filters in localStorage or query strings so they reload on refresh
-
-***
+UX POSSIBILITIES:
+- Expandable/collapsible (🔜)
+- Chart download/export (🔜)
+- Filter persistence (🔜)
+- Print styles (🔜)
+- Mobile & iframe-ready (✓)
+- Animated stats & themes (✓)

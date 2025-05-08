@@ -1,8 +1,9 @@
 import React from "react";
 import DashboardSectionWrapper from "./DashboardSectionWrapper";
+import ReviewsByRegion from "./ReviewsByRegion";
 
 const ActivityByArea = ({ records }) => {
-  const areaField = "Locality"; // Adjust if your field name differs
+  const areaField = "Locality";
 
   const areaCounts = records.reduce((acc, rec) => {
     const area = rec.fields[areaField] || "Unspecified";
@@ -15,7 +16,9 @@ const ActivityByArea = ({ records }) => {
   return (
     <DashboardSectionWrapper>
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Activity by Area</h1>
-      <h2 className="text-xl font-semibold text-brandGreen mb-4">Reviews by Location</h2>
+      <h2 className="text-xl font-semibold text-brandGreen mb-4">
+        Reviews by Location
+      </h2>
       <ul className="list-disc list-inside text-gray-700">
         {sorted.map(([area, count]) => (
           <li key={area}>
@@ -23,6 +26,7 @@ const ActivityByArea = ({ records }) => {
           </li>
         ))}
       </ul>
+      <ReviewsByRegion records={records} />
     </DashboardSectionWrapper>
   );
 };
