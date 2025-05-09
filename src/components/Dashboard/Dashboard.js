@@ -37,7 +37,6 @@ const Dashboard = () => {
         );
 
         const fetched = response.data.records;
-        console.log("🔎 Airtable Records:", fetched);
         setRecords(fetched);
 
         const parseDate = (input) => (input ? new Date(input) : null);

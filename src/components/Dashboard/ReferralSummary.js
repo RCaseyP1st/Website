@@ -7,6 +7,16 @@ import DropOffAnalysis from "./DropOffAnalysis";
 import EscalationsByHub from "./EscalationsByHub";
 import CarersAssessmentByHub from "./CarersAssessmentByHub";
 import AllContactMethods from "./AllContactMethods";
+import EffectiveContactMethods from "./EffectiveContactMethods";
+import LeastEffectiveContactMethods from "./LeastEffectiveContactMethods";
+import PreferredContactMethods from "./PreferredContactMethods";
+import AgeDemographics from "./AgeDemographics";
+import GenderBreakdown from "./GenderBreakdown";
+import EthnicityBreakdown from "./EthnicityBreakdown";
+import LivingWithPartner from "./LivingWithPartner";
+import GestationBreakdown from "./GestationBreakdown";
+import ContactSummary from "./ContactSummary";
+import WellbeingReviewStats from "./WellbeingReviewStats";
 
 const ReferralSummary = ({ records, allRecords }) => {
   const totalReferralsMade = records.length;
@@ -128,18 +138,20 @@ const ReferralSummary = ({ records, allRecords }) => {
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-        <DropOffAnalysis records={records} />
-      </div>
-      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-        <EscalationsByHub records={records} />
-      </div>
-      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-        <CarersAssessmentByHub records={records} />
-      </div>
-      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
-        <AllContactMethods records={records} />
-      </div>
+      <DropOffAnalysis records={records} />
+      <EscalationsByHub records={records} />
+      <CarersAssessmentByHub records={records} />
+      <PreferredContactMethods records={records} />
+      <AllContactMethods records={records} />
+      <EffectiveContactMethods records={records} />
+      <LeastEffectiveContactMethods records={records} />
+      <AgeDemographics records={records} />
+      <GenderBreakdown records={records} />
+      <EthnicityBreakdown records={records} />
+      <LivingWithPartner records={records} />
+      <GestationBreakdown records={records} />
+      <ContactSummary records={records} />
+      <WellbeingReviewStats records={records} />
     </DashboardSectionWrapper>
   );
 };

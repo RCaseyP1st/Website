@@ -1,13 +1,9 @@
 const DashboardSectionWrapper = ({ children }) => (
   <section className="w-full mb-12 px-0 sm:px-2 lg:px-4">
-    {/* Centered title area (only affects direct titles in children) */}
-    <div className="text-center mb-6">
-      {/* This is where your <h1> or section titles should go if centered */}
-    </div>
-
-    {/* Left-aligned content */}
-    <div className="w-full max-w-7xl mx-auto text-left">
-      {children}
+<div className="w-full px-2 sm:px-4 lg:px-6 text-left">
+      <div className="bg-white p-6 shadow-md rounded-xl border mb-4">
+        {children}
+      </div>
     </div>
   </section>
 );

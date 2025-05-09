@@ -260,6 +260,32 @@ const WellbeingForm = ({ isMinimal }) => {
       }
 
       // Gather form values
+      const rawDOB = document.querySelector("#dob")?.value.trim();
+      const dobDate = new Date(rawDOB);
+      const formattedDOB = formatDOB(rawDOB);
+
+      const age =
+        dobDate && !isNaN(dobDate)
+          ? Math.floor((new Date() - dobDate) / (1000 * 60 * 60 * 24 * 365.25))
+          : null;
+
+      let ageRange = "Unknown";
+      if (age !== null) {
+        if (age <= 25) ageRange = "18-25";
+        else if (age <= 34) ageRange = "26-34";
+        else if (age <= 44) ageRange = "35-44";
+        else if (age <= 54) ageRange = "45-54";
+        else if (age <= 64) ageRange = "55-64";
+        else ageRange = "65+";
+      }
+
+      if (age !== null && age < 18) {
+        setErrorMessage(
+          "Unfortunately, our service is only available to those aged 18 and over."
+        );
+        return;
+      }
+
       const formValues = {
         postcode: formattedPostcode,
         name: document.querySelector("#name")?.value.trim(),
@@ -271,14 +297,16 @@ const WellbeingForm = ({ isMinimal }) => {
           ?.value.trim(),
         ethnicity: document.querySelector("#ethnicity")?.value.trim(),
         gender: document.querySelector("#gender")?.value.trim(),
-        dob: formatDOB(document.querySelector("#dob")?.value.trim()),
+        dob: formattedDOB,
+        age: age !== null ? age.toString() : "Unknown",
+        ageRange,
         livingWithPregnantPerson: document.querySelector(
           'input[name="livingWithPregnantPerson"]:checked'
         )?.value,
         gestation: document.querySelector("#gestation")?.value.trim(),
-        town, // Updated state variable
-        localAuthority, // Updated state variable
-        location, // Updated state variable
+        town,
+        localAuthority,
+        location,
       };
 
       // Debugging: Log the form values
@@ -368,6 +396,9 @@ const WellbeingForm = ({ isMinimal }) => {
               [airtableFieldIDs.ethnicity]: formValues.ethnicity,
               [airtableFieldIDs.gender]: formValues.gender,
               [airtableFieldIDs.dob]: formValues.dob,
+              Age: formValues.age,
+              "Age Range": formValues.ageRange,
+
               [airtableFieldIDs.livingWithPregnantPerson]:
                 formValues.livingWithPregnantPerson,
               [airtableFieldIDs.gestation]: formValues.gestation,
@@ -375,7 +406,8 @@ const WellbeingForm = ({ isMinimal }) => {
               [airtableFieldIDs.localAuthority]: formValues.localAuthority, // Include updated Local Authority
               [airtableFieldIDs.location]: formValues.location, // Include updated Location
               [airtableFieldIDs.preferredContactMethods]: selectedMethods,
-              [airtableFieldIDs.otherContactMethod]: otherContact?.trim() || "N/A",
+              [airtableFieldIDs.otherContactMethod]:
+                otherContact?.trim() || "N/A",
               [airtableFieldIDs.consent]: formValues.consent,
               [airtableFieldIDs.userNumber]: generatedUserNumber,
               [airtableFieldIDs.confirmEligibility]: true,

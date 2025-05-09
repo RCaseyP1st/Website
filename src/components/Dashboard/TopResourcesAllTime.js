@@ -22,7 +22,6 @@ const TopResourcesAllTime = ({ records }) => {
     const userNumber = rec.fields["User Number"] || `#${i + 1}`;
 
     if (isCompleted) {
-      console.log(`✅ Using Record: ${userNumber} (Status: ${status})`);
     } else {
       return;
     }

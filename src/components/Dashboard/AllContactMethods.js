@@ -17,7 +17,9 @@ const AllContactMethods = ({ records }) => {
   const isValidMethod = (val) => {
     if (!val) return false;
     const lower = val.toString().toLowerCase().trim();
-    return lower && lower !== "n/a" && lower !== "na" && lower !== "not applicable";
+    return (
+      lower && lower !== "n/a" && lower !== "na" && lower !== "not applicable"
+    );
   };
 
   records.forEach((rec) => {
@@ -35,11 +37,8 @@ const AllContactMethods = ({ records }) => {
       }
     });
 
-    // Fields that are multi-select or comma-separated
-    const multiFields = [
-      "Preferred Method of Contact",
-      "Follow-Up Method",
-    ];
+    // Only include actual contact attempts, not preferences
+    const multiFields = ["Follow-Up Method"];
 
     multiFields.forEach((field) => {
       const values = rec.fields[field];
